@@ -30,6 +30,7 @@ analysis charts ([ADR 0020](adr/0020-radar-and-timeline.md)).
 - **Compare two characters** on the same radar (Melos and the king).
 - **Detect highlights from the data.** The parts where the charts move most
   ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
+
 ## Translation choices ([ADR 0011](adr/0011-translation-decisions.md))
 
 - Demo text: *Little Women* (public domain). Four sisters, so *sister* is an older or younger
