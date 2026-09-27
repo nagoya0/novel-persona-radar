@@ -21,3 +21,5 @@
 | 0017 | [Discard judgments for characters who are not in the paragraph](0017-presence-gate.md) | Accepted |
 | 0018 | [Judge the whole text; shorten the visit with highlights and autoplay](0018-highlights-and-autoplay.md) | Accepted |
 | 0019 | [Annotate each work once, with AI assistance and human review](0019-work-annotation-files.md) | Accepted |
+| 0020 | [The analysis column: a radar for now, a timeline for how it got there](0020-radar-and-timeline.md) | Accepted |
+| 0021 | [Arrow-key navigation and reduced motion](0021-keyboard-and-reduced-motion.md) | Accepted |

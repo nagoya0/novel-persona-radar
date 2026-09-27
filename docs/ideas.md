@@ -20,12 +20,9 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 
 ## Interface
 
-Proposed, not yet decided. The layout itself is in [ADR 0013](adr/0013-three-column-layout.md).
+Proposed, not yet decided. Decided so far: layout ([ADR 0013](adr/0013-three-column-layout.md)),
+analysis charts ([ADR 0020](adr/0020-radar-and-timeline.md)).
 
-- **One radar, two lines.** The current part as a thin line over the accumulated profile as a
-  thick one ([ADR 0005](adr/0005-two-layer-chart.md)), rather than two separate charts.
-- **Trait timeline.** Below the radar, a line per trait across the story so far: how the profile
-  got here. Clicking a sharp change jumps to that part.
 - **Evidence in the text.** Mark the paragraphs that gave evidence for the selected character;
   hovering a trait on the radar highlights its evidence.
 - **Characters appear as they are met.** The list grows as the reader reaches each character's
@@ -33,9 +30,6 @@ Proposed, not yet decided. The layout itself is in [ADR 0013](adr/0013-three-col
 - **Compare two characters** on the same radar (Melos and the king).
 - **Detect highlights from the data.** The parts where the charts move most
   ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
-- **Keyboard and motion.** Arrow keys move between parts; animations are reduced when the
-  operating system asks for reduced motion.
-
 ## Translation choices ([ADR 0011](adr/0011-translation-decisions.md))
 
 - Demo text: *Little Women* (public domain). Four sisters, so *sister* is an older or younger
