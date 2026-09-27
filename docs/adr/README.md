@@ -34,3 +34,4 @@
 | 0030 | [Give each paragraph its annotated speakers and cast, not the previous paragraphs](0030-annotated-cast-instead-of-previous-paragraphs.md) | Accepted |
 | 0031 | [Decide presence from the annotation, not from Jev](0031-presence-from-annotation.md) | Superseded by 0032 |
 | 0032 | [Profiles come from on-stage paragraphs; characters are listed from first mention](0032-on-stage-profiles-and-two-first-appearances.md) | Accepted |
+| 0033 | [Pin each work's source file in the repository](0033-pin-source-texts.md) | Accepted |
