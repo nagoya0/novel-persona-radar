@@ -22,11 +22,6 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 
 Proposed, not yet decided. The layout itself is in [ADR 0013](adr/0013-three-column-layout.md).
 
-- **Vertical text.** Set the novel in vertical writing (`writing-mode: vertical-rl`), as Japanese
-  fiction is printed. Consequences: "next" points left, as in a book (← for next, → for previous);
-  two-digit numbers need `text-combine-upright`; a part must fit the column without scrolling.
-- **Part size.** One paragraph per part by default, merging runs of short paragraphs such as
-  rapid dialogue, so each part fits and the chart still moves visibly.
 - **One radar, two lines.** The current part as a thin line over the accumulated profile as a
   thick one ([ADR 0005](adr/0005-two-layer-chart.md)), rather than two separate charts.
 - **Trait timeline.** Below the radar, a line per trait across the story so far: how the profile

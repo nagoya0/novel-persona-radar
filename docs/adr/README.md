@@ -15,3 +15,5 @@
 | 0011 | [Resolve translation choices with the same machinery](0011-translation-decisions.md) | Proposed |
 | 0012 | [Target desktop browsers; show a video on narrow screens](0012-desktop-browser-first.md) | Accepted |
 | 0013 | [Three columns: work, text, analysis](0013-three-column-layout.md) | Accepted |
+| 0014 | [Set the novel in vertical text](0014-vertical-text.md) | Accepted |
+| 0015 | [Judge paragraphs; show parts](0015-judge-paragraphs-show-parts.md) | Accepted |
