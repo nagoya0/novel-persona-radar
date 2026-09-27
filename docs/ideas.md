@@ -21,12 +21,11 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 ## Interface
 
 Proposed, not yet decided. Decided so far: layout ([ADR 0013](adr/0013-three-column-layout.md)),
-analysis charts ([ADR 0020](adr/0020-radar-and-timeline.md)).
+analysis charts ([ADR 0020](adr/0020-radar-and-timeline.md)), character list
+([ADR 0022](adr/0022-characters-appear-as-met.md)).
 
 - **Evidence in the text.** Mark the paragraphs that gave evidence for the selected character;
   hovering a trait on the radar highlights its evidence.
-- **Characters appear as they are met.** The list grows as the reader reaches each character's
-  first appearance, using the annotation file ([ADR 0019](adr/0019-work-annotation-files.md)).
 - **Compare two characters** on the same radar (Melos and the king).
 - **Detect highlights from the data.** The parts where the charts move most
   ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
