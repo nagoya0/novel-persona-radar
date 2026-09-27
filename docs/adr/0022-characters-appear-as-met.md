@@ -1,6 +1,6 @@
 # 22. Characters appear as the reader meets them
 
-- Status: Accepted
+- Status: Superseded by [0032](0032-on-stage-profiles-and-two-first-appearances.md)
 - Date: 2026-09-28
 
 ## Context

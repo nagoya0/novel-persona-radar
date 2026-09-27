@@ -26,6 +26,10 @@ analysis charts ([ADR 0020](adr/0020-radar-and-timeline.md)), character list
 
 - **Evidence in the text.** Mark the paragraphs that gave evidence for the selected character;
   hovering a trait on the radar highlights its evidence.
+- **Reputation.** A second profile built from paragraphs where a character is only mentioned
+  ([ADR 0032](adr/0032-on-stage-profiles-and-two-first-appearances.md)): what others say before the
+  reader meets them, against who they turn out to be. Fits *Run, Melos!*, a story about trust.
+  How to draw it alongside the profile is the open part.
 - **Compare two characters** on the same radar (Melos and the king).
 - **Detect highlights from the data.** The parts where the charts move most
   ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
@@ -57,8 +61,8 @@ Tested and worked, but outside this project's scope for now:
   paragraph 20: *cruel*, *malicious*, *hostile*, *haughty*, *arrogant*, *suspicious* all about 3.9).
   Check with the full-work data whether plain weighted accumulation makes every character's chart
   large everywhere, and whether some normalisation is needed.
-- **Characters seen through others.** In paragraph 20 the king privately calls Melos a liar; Jev gave
-  Melos *deceitful* evidence 0.53 with a score of 0.8. How opinions voiced by other characters
-  should count toward a character's profile.
+- **Characters seen through others.** In paragraph 20 the king privately calls Melos a liar while
+  Melos is on stage; Jev gave Melos *deceitful* evidence 0.53 with a score of 0.8. Paragraph-level
+  annotation cannot separate such opinions from direct evidence (see [ADR 0032](adr/0032-on-stage-profiles-and-two-first-appearances.md)).
 - **Which works to ship.** *Run, Melos!* is short and has a clear change of heart.
   *Botchan* is long (about a thousand paragraphs, so about a thousand requests).

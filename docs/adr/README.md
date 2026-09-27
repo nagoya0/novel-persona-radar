@@ -23,7 +23,7 @@
 | 0019 | [Annotate each work once, with AI assistance and human review](0019-work-annotation-files.md) | Accepted |
 | 0020 | [The analysis column: a radar for now, a timeline for how it got there](0020-radar-and-timeline.md) | Accepted |
 | 0021 | [Arrow-key navigation and reduced motion](0021-keyboard-and-reduced-motion.md) | Accepted |
-| 0022 | [Characters appear as the reader meets them](0022-characters-appear-as-met.md) | Accepted |
+| 0022 | [Characters appear as the reader meets them](0022-characters-appear-as-met.md) | Superseded by 0032 |
 | 0023 | [Next.js with static export](0023-nextjs-static-export.md) | Accepted |
 | 0024 | [Draw charts with D3 for maths, React for SVG, Motion for animation](0024-charts-d3-react-motion.md) | Accepted |
 | 0025 | [Style with Tailwind CSS](0025-tailwind-css.md) | Accepted |
@@ -32,4 +32,5 @@
 | 0028 | [One project, tested with Vitest, managed with pnpm](0028-single-project-vitest-pnpm.md) | Accepted |
 | 0029 | [Host on Vercel](0029-host-on-vercel.md) | Accepted |
 | 0030 | [Give each paragraph its annotated speakers and cast, not the previous paragraphs](0030-annotated-cast-instead-of-previous-paragraphs.md) | Accepted |
-| 0031 | [Decide presence from the annotation, not from Jev](0031-presence-from-annotation.md) | Accepted |
+| 0031 | [Decide presence from the annotation, not from Jev](0031-presence-from-annotation.md) | Superseded by 0032 |
+| 0032 | [Profiles come from on-stage paragraphs; characters are listed from first mention](0032-on-stage-profiles-and-two-first-appearances.md) | Accepted |

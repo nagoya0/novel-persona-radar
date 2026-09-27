@@ -1,6 +1,6 @@
 # 31. Decide presence from the annotation, not from Jev
 
-- Status: Accepted
+- Status: Superseded by [0032](0032-on-stage-profiles-and-two-first-appearances.md)
 - Date: 2026-09-28
 - Supersedes: [0017](0017-presence-gate.md)
 
