@@ -18,6 +18,33 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 - **Export a persona.** Turn an accumulated profile into a starting point for a chat character
   based on the same person.
 
+## Interface
+
+Proposed, not yet decided. The layout itself is in [ADR 0013](adr/0013-three-column-layout.md).
+
+- **Vertical text.** Set the novel in vertical writing (`writing-mode: vertical-rl`), as Japanese
+  fiction is printed. Consequences: "next" points left, as in a book (← for next, → for previous);
+  two-digit numbers need `text-combine-upright`; a part must fit the column without scrolling.
+- **Part size.** One paragraph per part by default, merging runs of short paragraphs such as
+  rapid dialogue, so each part fits and the chart still moves visibly.
+- **One radar, two lines.** The current part as a thin line over the accumulated profile as a
+  thick one ([ADR 0005](adr/0005-two-layer-chart.md)), rather than two separate charts.
+- **Trait timeline.** Below the radar, a line per trait across the story so far: how the profile
+  got here. Clicking a sharp change jumps to that part.
+- **Evidence in the text.** Mark the paragraphs that gave evidence for the selected character;
+  hovering a trait on the radar highlights its evidence.
+- **Characters appear as they are met.** The character list grows as the reader reaches each
+  character's first appearance, instead of listing everyone up front.
+- **Spoiler-free introduction.** The work column's summary avoids the ending. Jev cannot write
+  it, so it must be written by hand or taken from a source with a compatible licence.
+- **Compare two characters** on the same radar (Melos and the king).
+- **Re-draw the axes** with a button ([ADR 0007](adr/0007-random-axes.md)). With precomputed
+  judgments this means judging every trait in the dictionary in advance: characters × traits × 2
+  questions per paragraph (5 × 30 × 2 = 300). The per-request question limit is not documented
+  and needs checking.
+- **Keyboard and motion.** Arrow keys move between parts; animations are reduced when the
+  operating system asks for reduced motion.
+
 ## Translation choices ([ADR 0011](adr/0011-translation-decisions.md))
 
 - Demo text: *Little Women* (public domain). Four sisters, so *sister* is an older or younger

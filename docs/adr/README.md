@@ -13,3 +13,5 @@
 | 0009 | [Keep Aozora Bunko's source credits](0009-aozora-bunko-credits.md) | Accepted |
 | 0010 | [Write questions in English, keep the text in Japanese](0010-question-language.md) | Proposed |
 | 0011 | [Resolve translation choices with the same machinery](0011-translation-decisions.md) | Proposed |
+| 0012 | [Target desktop browsers; show a video on narrow screens](0012-desktop-browser-first.md) | Accepted |
+| 0013 | [Three columns: work, text, analysis](0013-three-column-layout.md) | Accepted |
