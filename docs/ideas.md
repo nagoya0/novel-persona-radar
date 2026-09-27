@@ -64,5 +64,8 @@ Tested and worked, but outside this project's scope for now:
 - **Characters seen through others.** In paragraph 20 the king privately calls Melos a liar while
   Melos is on stage; Jev gave Melos *deceitful* evidence 0.53 with a score of 0.8. Paragraph-level
   annotation cannot separate such opinions from direct evidence (see [ADR 0032](adr/0032-on-stage-profiles-and-two-first-appearances.md)).
+- **Speakers within a paragraph.** The annotation lists a paragraph's speakers but not which line
+  is whose. Fine for *Run, Melos!*, where lines of dialogue are separate paragraphs; a work where
+  two characters speak different lines in one paragraph would need speakers per quoted span.
 - **Which works to ship.** *Run, Melos!* is short and has a clear change of heart.
   *Botchan* is long (about a thousand paragraphs, so about a thousand requests).

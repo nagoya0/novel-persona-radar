@@ -29,6 +29,7 @@
     {"id": "philostratus", "judged": true, "name": "フィロストラトス", "names": ["フィロストラトス", "若い石工", "弟子"], "firstMention": 50, "firstOnStage": 50, "intro": "セリヌンティウスの弟子の、若い石工。"},
     {"id": "bandits", "judged": false, "name": "山賊", "names": ["山賊"], "firstMention": 38, "firstOnStage": 38, "intro": "峠でメロスの行く手に躍り出た、山賊の一隊。"},
     {"id": "crowd", "judged": false, "name": "群衆", "names": ["群衆"], "firstMention": 60, "firstOnStage": 60, "intro": "刑場に集まった、シラクスの市の人々。"},
+    {"id": "travellers", "judged": false, "name": "旅人", "names": ["旅人"], "firstMention": 49, "firstOnStage": 49, "intro": "メロスとすれちがった、一団の旅人。"},
     {"id": "girl", "judged": false, "name": "少女", "names": ["少女", "娘さん"], "firstMention": 71, "firstOnStage": 71, "intro": "刑場にいた、ひとりの少女。"}
   ],
   "highlights": [
@@ -90,7 +91,7 @@
     {"index": 46, "speakers": ["melos"], "onStage": ["melos"], "mentioned": ["selinuntius", "king", "sister", "groom", "bandits"], "note": "Mostly Melos's inner monologue of despair.", "review": true},
     {"index": 47, "speakers": ["melos"], "onStage": ["melos"], "mentioned": ["selinuntius"], "note": "Narration moving into Melos's monologue; 待っている人 is Selinuntius."},
     {"index": 48, "speakers": ["melos"], "onStage": ["melos"], "mentioned": []},
-    {"index": 49, "speakers": [], "onStage": ["melos"], "mentioned": ["selinuntius"], "note": "その男 is Selinuntius."},
+    {"index": 49, "speakers": ["travellers"], "onStage": ["melos", "travellers"], "mentioned": ["selinuntius"], "note": "Narration with one line from passing travellers. その男 is Selinuntius."},
     {"index": 50, "speakers": ["philostratus"], "onStage": ["melos", "philostratus"], "mentioned": [], "note": "The speaker is named only in paragraph 52.", "review": true},
     {"index": 51, "speakers": ["melos"], "onStage": ["melos", "philostratus"], "mentioned": []},
     {"index": 52, "speakers": ["philostratus"], "onStage": ["philostratus", "melos"], "mentioned": ["selinuntius"]},
