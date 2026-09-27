@@ -1,6 +1,6 @@
 # 6. Give each paragraph some context
 
-- Status: Accepted
+- Status: Superseded by [0030](0030-annotated-cast-instead-of-previous-paragraphs.md)
 - Date: 2026-09-27
 
 ## Context

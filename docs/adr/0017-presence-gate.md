@@ -1,6 +1,6 @@
 # 17. Discard judgments for characters who are not in the paragraph
 
-- Status: Accepted
+- Status: Superseded by [0031](0031-presence-from-annotation.md)
 - Date: 2026-09-28
 
 ## Context

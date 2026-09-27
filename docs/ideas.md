@@ -53,7 +53,12 @@ Tested and worked, but outside this project's scope for now:
 
 - **The trait dictionary.** Which ~30 traits ([ADR 0016](adr/0016-precomputed-trait-dictionary.md));
   whether near-synonyms and opposites should be kept out of the same random draw.
-- **Presence gate.** How much leakage it removes ([ADR 0017](adr/0017-presence-gate.md)).
+- **Accumulation.** Where evidence is strong, many traits score near the maximum at once (the king in
+  paragraph 20: *cruel*, *malicious*, *hostile*, *haughty*, *arrogant*, *suspicious* all about 3.9).
+  Check with the full-work data whether plain weighted accumulation makes every character's chart
+  large everywhere, and whether some normalisation is needed.
+- **Characters seen through others.** In paragraph 20 the king privately calls Melos a liar; Jev gave
+  Melos *deceitful* evidence 0.53 with a score of 0.8. How opinions voiced by other characters
+  should count toward a character's profile.
 - **Which works to ship.** *Run, Melos!* is short and has a clear change of heart.
   *Botchan* is long (about a thousand paragraphs, so about a thousand requests).
-- **How much context.** Two or three preceding paragraphs is a guess to be tested.
