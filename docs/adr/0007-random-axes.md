@@ -1,6 +1,6 @@
 # 7. Draw the chart's axes at random
 
-- Status: Accepted
+- Status: Superseded by [0016](0016-precomputed-trait-dictionary.md)
 - Date: 2026-09-27
 
 ## Context

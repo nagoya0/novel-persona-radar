@@ -28,15 +28,11 @@ Proposed, not yet decided. The layout itself is in [ADR 0013](adr/0013-three-col
   got here. Clicking a sharp change jumps to that part.
 - **Evidence in the text.** Mark the paragraphs that gave evidence for the selected character;
   hovering a trait on the radar highlights its evidence.
-- **Characters appear as they are met.** The character list grows as the reader reaches each
-  character's first appearance, instead of listing everyone up front.
-- **Spoiler-free introduction.** The work column's summary avoids the ending. Jev cannot write
-  it, so it must be written by hand or taken from a source with a compatible licence.
+- **Characters appear as they are met.** The list grows as the reader reaches each character's
+  first appearance, using the annotation file ([ADR 0019](adr/0019-work-annotation-files.md)).
 - **Compare two characters** on the same radar (Melos and the king).
-- **Re-draw the axes** with a button ([ADR 0007](adr/0007-random-axes.md)). With precomputed
-  judgments this means judging every trait in the dictionary in advance: characters × traits × 2
-  questions per paragraph (5 × 30 × 2 = 300). The per-request question limit is not documented
-  and needs checking.
+- **Detect highlights from the data.** The parts where the charts move most
+  ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
 - **Keyboard and motion.** Arrow keys move between parts; animations are reduced when the
   operating system asks for reduced motion.
 
@@ -61,10 +57,9 @@ Tested and worked, but outside this project's scope for now:
 
 ## Open questions
 
-- **Finding characters.** Candidate names from heuristics (katakana words, the word before
-  は / が), then a Jev yes/no filter: *is this a character?*
-- **The trait dictionary.** Where it comes from, how many traits, whether near-synonyms and
-  opposites should be avoided in the same draw.
+- **The trait dictionary.** Which ~30 traits ([ADR 0016](adr/0016-precomputed-trait-dictionary.md));
+  whether near-synonyms and opposites should be kept out of the same random draw.
+- **Presence gate.** How much leakage it removes ([ADR 0017](adr/0017-presence-gate.md)).
 - **Which works to ship.** *Run, Melos!* is short and has a clear change of heart.
   *Botchan* is long (about a thousand paragraphs, so about a thousand requests).
 - **How much context.** Two or three preceding paragraphs is a guess to be tested.

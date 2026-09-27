@@ -8,7 +8,7 @@
 | 0004 | [Older paragraphs fade](0004-older-paragraphs-fade.md) | Accepted |
 | 0005 | [Show the current paragraph and the accumulated profile together](0005-two-layer-chart.md) | Accepted |
 | 0006 | [Give each paragraph some context](0006-context-for-each-paragraph.md) | Accepted |
-| 0007 | [Draw the chart's axes at random](0007-random-axes.md) | Accepted |
+| 0007 | [Draw the chart's axes at random](0007-random-axes.md) | Superseded by 0016 |
 | 0008 | [Replay recorded judgments in the public demo](0008-replay-in-the-demo.md) | Accepted |
 | 0009 | [Keep Aozora Bunko's source credits](0009-aozora-bunko-credits.md) | Accepted |
 | 0010 | [Write questions in English, keep the text in Japanese](0010-question-language.md) | Proposed |
@@ -17,3 +17,7 @@
 | 0013 | [Three columns: work, text, analysis](0013-three-column-layout.md) | Accepted |
 | 0014 | [Set the novel in vertical text](0014-vertical-text.md) | Accepted |
 | 0015 | [Judge paragraphs; show parts](0015-judge-paragraphs-show-parts.md) | Accepted |
+| 0016 | [Judge a fixed trait dictionary in advance; let the viewer pick the axes](0016-precomputed-trait-dictionary.md) | Accepted |
+| 0017 | [Discard judgments for characters who are not in the paragraph](0017-presence-gate.md) | Accepted |
+| 0018 | [Judge the whole text; shorten the visit with highlights and autoplay](0018-highlights-and-autoplay.md) | Accepted |
+| 0019 | [Annotate each work once, with AI assistance and human review](0019-work-annotation-files.md) | Accepted |
