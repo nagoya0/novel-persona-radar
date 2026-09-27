@@ -8,7 +8,7 @@ The axes are picked at random from a dictionary of traits — *stingy*, *kind*, 
 *suspicious* — so some come into focus as the story goes on, and some stay grey because the
 story never tells us.
 
-> **Status:** concept stage. Nothing runs yet; the design so far is in [DECISIONS.md](DECISIONS.md).
+> **Status:** concept stage. Nothing runs yet; the design so far is recorded in [docs/adr](docs/adr/).
 
 ## How it works
 
@@ -31,4 +31,4 @@ only asked what a reader could judge from the text in front of them.
 A score on its own is noisy: asked how *suspicious* a character is in a paragraph where they
 do not appear, the model still answers with a number. Asking first whether the paragraph says
 anything about that trait at all, and weighting by the answer, keeps the chart from drifting.
-See [DECISIONS.md](DECISIONS.md) for the test that showed this.
+See [ADR 0003](docs/adr/0003-evidence-and-score.md) for the test that showed this.
