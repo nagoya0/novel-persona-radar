@@ -9,7 +9,7 @@ export interface TraitValue {
 }
 
 export interface PartProfile {
-  /** From the paragraphs that start in this part only (the thin radar line). */
+  /** From the paragraphs shown in this part, split ones included (the current-part layer). */
   current: Record<string, TraitValue>;
   /** From everything up to and including this part, older evidence fading (the thick line). */
   accumulated: Record<string, TraitValue>;
@@ -31,7 +31,8 @@ export const DEFAULT_PROFILE_OPTIONS: ProfileOptions = { decay: 0.85, unknownBel
 
 /**
  * Build a character's profile part by part (ADR 0002, 0003, 0004). Only paragraphs where the
- * character is on stage have judgments (ADR 0032); each counts in the part where it starts.
+ * character is on stage have judgments (ADR 0032). A paragraph adds to the accumulated profile
+ * once, in the part where it starts; it colours the current impression of every part it appears in.
  */
 export function buildProfile(
   judgments: Judgments,
@@ -57,6 +58,13 @@ export function buildProfile(
         const [ev, sc] = j[t] ?? [0, 0];
         num[t] = num[t] * options.decay + ev * sc;
         den[t] = den[t] * options.decay + ev;
+      }
+    }
+    for (const p of part.shows) {
+      const j = byParagraph[p];
+      if (!j) continue;
+      for (const t of traitIds) {
+        const [ev, sc] = j[t] ?? [0, 0];
         curNum[t] += ev * sc;
         curDen[t] += ev;
       }
