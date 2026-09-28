@@ -28,7 +28,6 @@ body {
 .tategaki {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  font-family: var(--font-serif);
   line-height: 1.85;
   letter-spacing: 0.05em;
 }

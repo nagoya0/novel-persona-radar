@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import type { Part } from "@/core/parts";
 import type { Segment } from "@/core/types";
+import type { Typeface } from "./WorkView";
 
 /** Set runs of one or two digits upright in vertical text (ADR 0014). */
 function withUprightDigits(text: string, key: string): ReactNode[] {
@@ -57,6 +58,7 @@ export default function TextColumn({
   maxParagraphs,
   onNext,
   onPrev,
+  typeface,
 }: {
   part: Part;
   index: number;
@@ -67,6 +69,8 @@ export default function TextColumn({
   maxParagraphs: number;
   onNext: () => void;
   onPrev: () => void;
+  /** Mincho or Gothic; both are full-width, so the fitted size still holds. */
+  typeface: Typeface;
 }) {
   // One font size for the whole work, sized so that the fullest part fits this screen.
   const box = useRef<HTMLDivElement>(null);
@@ -95,7 +99,7 @@ export default function TextColumn({
           ‹
         </button>
         <div ref={box} className="flex min-w-0 flex-1 justify-center overflow-hidden py-8">
-          <div className="tategaki h-full" style={{ fontSize }}>
+          <div className={`tategaki h-full ${typeface === "sans" ? "font-sans" : "font-serif"}`} style={{ fontSize }}>
             {part.chunks.map((c, i) => (
               <p key={`${c.paragraph}-${i}`} className={c.indent ? "indent-[1em]" : ""} data-paragraph={c.paragraph}>
                 {renderSegments(c.segments, `${c.paragraph}-${i}`)}

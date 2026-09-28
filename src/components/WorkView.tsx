@@ -12,13 +12,43 @@ import WorkColumn from "./WorkColumn";
 const PART_BUDGET = 400; // characters per part (ADR 0015)
 const DEFAULT_AXES = ["suspicious", "trusting", "forgiving", "passionate", "idealistic", "guileless"];
 export type LabelStyle = "casual" | "formal";
+export type Typeface = "serif" | "sans";
+
+function Toggle<T extends string>({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: T;
+  options: [T, string][];
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div className="flex items-center gap-1">
+      <span className="mr-1 text-muted">{label}</span>
+      {options.map(([v, text]) => (
+        <button
+          key={v}
+          onClick={() => onChange(v)}
+          className={`rounded px-2 py-0.5 ${value === v ? "bg-foreground text-panel" : "text-muted hover:text-foreground"}`}
+        >
+          {text}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export default function WorkView({ work, works }: { work: WorkData; works: WorkSummary[] }) {
   const parts = useMemo(() => packParts(work.paragraphs, PART_BUDGET), [work]);
   const [part, setPart] = useState(0);
   const [character, setCharacter] = useState("melos");
   const [axes, setAxes] = useState<string[]>(DEFAULT_AXES);
-  const [labelStyle, setLabelStyle] = useState<LabelStyle>("casual");
+  // Trait labels are always the casual ones; the formal labels stay in the dictionary.
+  const labelStyle: LabelStyle = "casual";
+  const [typeface, setTypeface] = useState<Typeface>("serif");
   const [hovered, setHovered] = useState<string | null>(null);
 
   const go = useCallback((i: number) => setPart(Math.max(0, Math.min(parts.length - 1, i))), [parts.length]);
@@ -69,17 +99,16 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
       <div className="hidden h-full min-[1280px]:flex flex-col">
         <header className="flex h-12 shrink-0 items-center justify-between border-b border-line bg-panel px-5">
           <span className="font-bold tracking-wide">Novel Persona Radar</span>
-          <div className="flex items-center gap-3 text-sm">
-            <span className="text-muted">表記</span>
-            {(["casual", "formal"] as const).map((s) => (
-              <button
-                key={s}
-                onClick={() => setLabelStyle(s)}
-                className={`rounded px-2 py-0.5 ${labelStyle === s ? "bg-foreground text-panel" : "text-muted hover:text-foreground"}`}
-              >
-                {s === "casual" ? "くだけた" : "堅い"}
-              </button>
-            ))}
+          <div className="flex items-center gap-6 text-sm">
+            <Toggle
+              label="書体"
+              value={typeface}
+              options={[
+                ["serif", "明朝"],
+                ["sans", "ゴシック"],
+              ]}
+              onChange={setTypeface}
+            />
           </div>
         </header>
         <main className="grid min-h-0 flex-1 grid-cols-[clamp(240px,16vw,320px)_minmax(0,1fr)_clamp(420px,27vw,520px)]">
@@ -97,6 +126,7 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
             maxParagraphs={fullest.paragraphs}
             onNext={() => go(part + 1)}
             onPrev={() => go(part - 1)}
+            typeface={typeface}
           />
           <AnalysisColumn
             work={work}
