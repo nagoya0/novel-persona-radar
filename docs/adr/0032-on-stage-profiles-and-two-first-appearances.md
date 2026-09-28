@@ -12,13 +12,15 @@ and an opinion often says more about the speaker: when the king in *Run, Melos!*
 that shows the king's suspicion, not Melos's dishonesty.
 
 The king is talked about from the first paragraph — the old man says he kills people because he
-cannot trust anyone — but does not appear until paragraph 10. Counting the old man's account would
+cannot trust anyone — but does not appear until Melos is brought before him at the end of
+paragraph 9. Counting the old man's account would
 build the king's profile from hearsay before the reader has met him.
 
 ## Decision
 
-The annotation records, per paragraph, which characters are **on stage** (present in the scene,
-speaking, acting or thinking) and which are only **mentioned**. Per character, it records two first
+The annotation records, per paragraph, which characters are **on stage** (present in the scene the
+paragraph describes, whether or not they do anything in it) and which are only **mentioned**
+(referred to while elsewhere). Per character, it records two first
 appearances: `firstMention` and `firstOnStage`.
 
 - **A character's profile** is built only from paragraphs where they are on stage. Mentions do not
