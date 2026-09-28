@@ -20,7 +20,13 @@ Packing whole paragraphs up to a character budget gives, for *Run, Melos!*: 200 
 Jev judges every paragraph separately, and the judgments are stored per paragraph. The screen
 shows *parts*: consecutive paragraphs packed up to a character budget, starting at about 400.
 A paragraph that exceeds the budget on its own is split at sentence ends. The chart for a part is
-computed from the judgments of the paragraphs it contains.
+computed from the judgments of the paragraphs that start in it.
+
+*Amended 2026-09-28:* judgments first took effect in the part that completes a paragraph. The first
+paragraph of *Run, Melos!* (691 characters) spans two parts, so the opening part showed no chart
+at all. A split paragraph's judgments now take effect where it starts. Splitting its weight across
+its parts by length was considered; it pushes traits below the evidence threshold and shows them
+as unknown, so it was rejected.
 
 ## Consequences
 

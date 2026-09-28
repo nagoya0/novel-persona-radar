@@ -6,14 +6,17 @@ export interface Chunk {
   segments: Segment[];
   length: number;
   indent: boolean;
-  /** True for the chunk that ends its paragraph. */
-  endsParagraph: boolean;
+  /** True for the chunk that starts its paragraph. */
+  startsParagraph: boolean;
 }
 
 export interface Part {
   chunks: Chunk[];
-  /** Paragraphs whose last chunk falls in this part; their judgments take effect here. */
-  completes: number[];
+  /**
+   * Paragraphs that start in this part. A paragraph's judgments take effect where it starts,
+   * so a part that opens a long, split paragraph is never empty (ADR 0015).
+   */
+  starts: number[];
   firstParagraph: number;
   lastParagraph: number;
 }
@@ -45,7 +48,7 @@ function sentences(segments: Segment[]): Segment[][] {
 
 function toChunks(p: Paragraph, budget: number): Chunk[] {
   if (p.length <= budget) {
-    return [{ paragraph: p.index, segments: p.segments, length: p.length, indent: p.indent, endsParagraph: true }];
+    return [{ paragraph: p.index, segments: p.segments, length: p.length, indent: p.indent, startsParagraph: true }];
   }
   const chunks: Chunk[] = [];
   let segs: Segment[] = [];
@@ -53,14 +56,14 @@ function toChunks(p: Paragraph, budget: number): Chunk[] {
   for (const sentence of sentences(p.segments)) {
     const sLen = sentence.reduce((n, s) => n + segLength(s), 0);
     if (len && len + sLen > budget) {
-      chunks.push({ paragraph: p.index, segments: segs, length: len, indent: chunks.length === 0 && p.indent, endsParagraph: false });
+      chunks.push({ paragraph: p.index, segments: segs, length: len, indent: chunks.length === 0 && p.indent, startsParagraph: chunks.length === 0 });
       segs = [];
       len = 0;
     }
     segs = segs.concat(sentence);
     len += sLen;
   }
-  chunks.push({ paragraph: p.index, segments: segs, length: len, indent: chunks.length === 0 && p.indent, endsParagraph: true });
+  chunks.push({ paragraph: p.index, segments: segs, length: len, indent: chunks.length === 0 && p.indent, startsParagraph: chunks.length === 0 });
   return chunks;
 }
 
@@ -76,7 +79,7 @@ export function packParts(paragraphs: Paragraph[], budget: number): Part[] {
     if (!chunks.length) return;
     parts.push({
       chunks,
-      completes: chunks.filter((c) => c.endsParagraph).map((c) => c.paragraph),
+      starts: chunks.filter((c) => c.startsParagraph).map((c) => c.paragraph),
       firstParagraph: chunks[0].paragraph,
       lastParagraph: chunks[chunks.length - 1].paragraph,
     });
