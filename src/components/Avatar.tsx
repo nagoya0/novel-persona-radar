@@ -1,0 +1,30 @@
+// Muted backgrounds that read well behind a light silhouette.
+const BACKGROUNDS = ["#c97b63", "#6b8fb3", "#7fa37a", "#b08bbb", "#d1a35a", "#5f9e9a", "#c7798f", "#8c8f5a", "#8a7fc2", "#b8866b"];
+
+/** A stable colour per character: looks arbitrary, but never changes between visits. */
+function backgroundFor(id: string): string {
+  let h = 0;
+  for (const ch of id) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return BACKGROUNDS[h % BACKGROUNDS.length];
+}
+
+/**
+ * A generic head-and-shoulders silhouette. Characters only heard of so far are dimmed and
+ * marked "？" (ADR 0032).
+ */
+export default function Avatar({ id, unknown = false, size = 56 }: { id: string; unknown?: boolean; size?: number }) {
+  return (
+    <svg viewBox="0 0 64 64" width={size} height={size} className="block rounded-full" aria-hidden>
+      <rect width="64" height="64" fill={unknown ? "#cfc8bc" : backgroundFor(id)} />
+      <g fill="#fffdf8" fillOpacity={unknown ? 0.55 : 0.9}>
+        <circle cx="32" cy="25" r="11" />
+        <path d="M10 64c0-13 10-22 22-22s22 9 22 22z" />
+      </g>
+      {unknown && (
+        <text x="32" y="34" textAnchor="middle" dominantBaseline="middle" fontSize="30" fontWeight="700" fill="#6f665b">
+          ？
+        </text>
+      )}
+    </svg>
+  );
+}

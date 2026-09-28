@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { WorkData } from "@/core/types";
 import type { WorkSummary } from "@/lib/works";
+import Avatar from "./Avatar";
 
 export default function WorkColumn({
   work,
@@ -40,27 +41,33 @@ export default function WorkColumn({
       </section>
 
       <section>
-        <h2 className="text-xs text-muted">見どころ</h2>
-        <ul className="mt-1 space-y-0.5">
+        <label htmlFor="highlight" className="text-xs text-muted">
+          見どころ
+        </label>
+        <select
+          id="highlight"
+          value=""
+          onChange={(e) => e.target.value !== "" && onJump(Number(e.target.value))}
+          className="mt-1 w-full rounded border border-line bg-panel px-2 py-1 text-sm"
+        >
+          <option value="">場面を選んで移動…</option>
           {work.highlights.map((h) => (
-            <li key={h.paragraph}>
-              <button onClick={() => onJump(h.paragraph)} className="text-left text-sm hover:underline">
-                {h.title}
-              </button>
-            </li>
+            <option key={h.paragraph} value={h.paragraph}>
+              {h.title}
+            </option>
           ))}
-        </ul>
+        </select>
       </section>
 
       <section>
         <h2 className="text-xs text-muted">登場人物</h2>
-        <ul className="mt-2 space-y-3">
+        <ul className="mt-2 grid grid-cols-2 gap-x-2 gap-y-3">
           {known.map((c) => {
             const met = c.firstOnStage <= position;
             return (
-              <li key={c.id}>
-                <div className="text-sm font-medium">{c.name}</div>
-                <p className={`text-xs leading-relaxed ${met ? "" : "text-muted"}`}>{met ? c.intro : "？"}</p>
+              <li key={c.id} className="flex flex-col items-center text-center" title={met ? c.intro : "？"}>
+                <Avatar id={c.id} unknown={!met} />
+                <span className={`mt-1 text-xs leading-tight ${met ? "" : "text-muted"}`}>{c.name}</span>
               </li>
             );
           })}
