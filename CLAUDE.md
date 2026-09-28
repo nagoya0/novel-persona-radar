@@ -14,7 +14,10 @@ This project uses a recent Next.js whose APIs may differ from what you know. Fol
 
 - `pnpm dev` / `pnpm build` first run `scripts/build-data.ts`, which compiles `data/` into
   `src/generated/` (git-ignored). Run `pnpm data` on its own after changing data.
-- `src/core/` is pure TypeScript with no React or Node dependencies.
+- `src/core/` is pure TypeScript with no React or Node dependencies; `pnpm test` runs its tests.
+- `pnpm judge <work-id>` sends the missing judgments to Jev and appends them to
+  `data/works/<id>/judgments.jsonl` (see [docs/judging.md](docs/judging.md)). It costs money:
+  run it only when asked, and try `--dry-run` first.
 
 ## Language
 

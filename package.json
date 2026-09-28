@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "data": "tsx scripts/build-data.ts",
+    "judge": "tsx scripts/judge.ts",
+    "test": "vitest run",
     "predev": "tsx scripts/build-data.ts",
     "prebuild": "tsx scripts/build-data.ts",
     "dev": "next dev",
@@ -22,14 +24,15 @@
     "@tailwindcss/postcss": "^4",
     "@types/d3-scale": "^4.0.9",
     "@types/d3-shape": "^3.2.0",
-    "@types/node": "^20",
+    "@types/node": "^24.19.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.6",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^5.0.2"
   },
   "packageManager": "pnpm@12.8.0"
 }

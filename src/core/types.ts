@@ -33,6 +33,35 @@ export interface Highlight {
   title: string;
 }
 
+/** Who a paragraph's words belong to (ADR 0034); `subject` is a character id or "narrator". */
+export interface Voice {
+  kind: "narrative" | "speech" | "thoughts";
+  subject: string;
+}
+
+export interface ParagraphAnnotation {
+  index: number;
+  voices: Voice[];
+  onStage: string[];
+  mentioned: string[];
+  context?: string;
+  /** For human review only; never sent to Jev. */
+  reviewNote?: string;
+}
+
+export interface Annotation {
+  id: string;
+  title: string;
+  author: string;
+  narrator: { person: "first" | "third"; character: string | null };
+  summary: string;
+  source: { url: string; file: string; sha256: string; credits: string[] };
+  excludedParagraphs: number[];
+  characters: Character[];
+  highlights: Highlight[];
+  paragraphs: ParagraphAnnotation[];
+}
+
 /** [evidence, score] for one trait; evidence is 0–1, score is 0–4. */
 export type TraitJudgment = [number, number];
 

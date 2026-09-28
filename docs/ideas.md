@@ -6,10 +6,8 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 
 Decided but not built yet, roughly in order:
 
-1. **TypeScript judging pipeline** ([ADR 0026](adr/0026-node-pipeline-and-jev-client.md)): import,
-   judge, compile. Re-judge *Run, Melos!* with the 30-trait dictionary to replace
-   `judgments.screening.jsonl`, which came from a throwaway screening script. The request format
-   to reproduce is in [judging.md](judging.md).
+1. **Remaining animation.** The radar morphing between parts, and the text fading between parts
+   ([ADR 0013](adr/0013-three-column-layout.md)).
 2. **Autoplay** ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
 3. **README with a demo video**, doubling as the narrow-screen fallback
    ([ADR 0012](adr/0012-desktop-browser-first.md)); mention the page bar and deep links.
@@ -47,8 +45,6 @@ analysis column ([ADR 0038](adr/0038-current-radar-and-trait-ranking.md)), chara
 - **Compare two characters**, e.g. their rankings side by side (Melos and the king).
 - **Detect highlights from the data.** The parts where the ranking moves most
   ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
-- **Remaining animation.** The radar morphing between parts, and the text fading between parts
-  ([ADR 0013](adr/0013-three-column-layout.md)).
 - **Deep links without the flash.** Read `?part=` before the first render instead of jumping after
   mount ([ADR 0039](adr/0039-reading-controls.md)).
 
@@ -88,5 +84,13 @@ Tested and worked, but outside this project's scope for now:
 - **Speakers within a paragraph.** The annotation lists a paragraph's speakers but not which line
   is whose. Fine for *Run, Melos!*, where lines of dialogue are separate paragraphs; a work where
   two characters speak different lines in one paragraph would need speakers per quoted span.
+- **Parsing richer Aozora Bunko markup.** The source is parsed with regular expressions, which is
+  enough for *Run, Melos!* (ruby and line breaks only) but departs from
+  [ADR 0026](adr/0026-node-pipeline-and-jev-client.md) (an HTML parser). Other works have gaiji
+  images (JIS-less kanji, currently dropped without a trace), chapter headings (currently read as
+  paragraphs) and indentation markup. Switch to an HTML parser and handle these before adding the
+  next work.
+- **First-person narrators.** Requests describe such works as told in the first person by the
+  narrator character, but no first-person work has been judged yet (*Botchan* would be the first).
 - **Which works to ship.** *Run, Melos!* is short and has a clear change of heart.
   *Botchan* is long (about a thousand paragraphs, so about a thousand requests).

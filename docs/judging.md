@@ -1,9 +1,9 @@
 # Judging requests
 
-The exact shape of the requests that produced the current judgments
-(`data/works/run-melos/judgments.screening.jsonl`), so the TypeScript pipeline
-([ADR 0026](adr/0026-node-pipeline-and-jev-client.md)) can reproduce them. The screening run used a
-throwaway script; this file is the only record of its format.
+The shape of the requests behind `data/works/<id>/judgments.jsonl`. Built by
+[src/core/judging.ts](../src/core/judging.ts) and sent by `pnpm judge <work-id>`
+([ADR 0026](adr/0026-node-pipeline-and-jev-client.md)); keys are injected with `bws run` as described
+in [CLAUDE.md](../CLAUDE.md). `--dry-run` prints the first request without sending anything.
 
 ## One request per paragraph and on-stage character
 
@@ -68,8 +68,13 @@ One JSON line per request, appended as answers arrive so a run can resume
 
 `traits[id]` is `[evidence, score]`.
 
-## Numbers from the screening run
+## Numbers
 
-*Run, Melos!*, 100 candidate traits (200 questions per request): 152 requests, about 2 million input
-tokens, about US$0.09, one minute, no `429`s on the official API. With the 30-trait dictionary a
-full work costs a third of that.
+- Screening, 100 candidate traits (200 questions per request): *Run, Melos!* in 152 requests, about
+  2 million input tokens, about US$0.09, one minute.
+- The 30-trait dictionary (60 questions per request): 152 requests, 670 thousand input tokens,
+  about US$0.03. It took twelve minutes with no `429`s: the first forty responses took about
+  seventeen seconds each, the rest a third of a second.
+- Repeatability: judging again with the same model (`jev-1.13.0`) and the same requests changed
+  evidence by 0.01 and scores by 0.05 on average (correlation above 0.99), and left each character's
+  top five traits unchanged apart from the king's fourth and fifth.
