@@ -51,9 +51,9 @@ export default function WorkColumn({
           className="mt-1 w-full rounded border border-line bg-panel px-2 py-1 text-sm"
         >
           <option value="">選んで移動…</option>
-          {work.highlights.map((h) => (
+          {work.highlights.map((h, i) => (
             <option key={h.paragraph} value={h.paragraph}>
-              {h.title}
+              §{i + 1} {h.title}
             </option>
           ))}
         </select>

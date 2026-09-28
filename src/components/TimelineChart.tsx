@@ -33,6 +33,13 @@ export default function TimelineChart({
   const x = scaleLinear().domain([0, n - 1]).range([M.left, W - M.right]);
   const y = scaleLinear().domain([0, MAX]).range([H - M.bottom, M.top]);
 
+  // Scenes are labelled §1, §2 …; a label too close to the previous one goes on the other row.
+  const rows: number[] = [];
+  highlights.forEach((h, i) => {
+    const tooClose = i > 0 && x(h.part) - x(highlights[i - 1].part) < 18;
+    rows.push(tooClose ? 1 - rows[i - 1] : 0);
+  });
+
   const onClick = (e: MouseEvent<SVGSVGElement>) => {
     const svg = e.currentTarget;
     const pt = svg.createSVGPoint();
@@ -52,15 +59,20 @@ export default function TimelineChart({
           </text>
         </g>
       ))}
-      {highlights.map((h) => (
-        <g key={h.title}>
-          <line x1={x(h.part)} x2={x(h.part)} y1={M.top - 4} y2={H - M.bottom} stroke="var(--line)" strokeDasharray="2 3" />
-          <text x={x(h.part)} y={M.top - 8} fontSize={9} textAnchor="middle" fill="var(--muted)">
-            {h.title.length > 5 ? h.title.slice(0, 5) + "…" : h.title}
-            <title>{h.title}</title>
-          </text>
-        </g>
-      ))}
+      {highlights.map((h, i) => {
+        const row = rows[i];
+        return (
+          <g key={h.title}>
+            <line x1={x(h.part)} x2={x(h.part)} y1={M.top - 4} y2={H - M.bottom} stroke="var(--line)" strokeDasharray="2 3" />
+            <text x={x(h.part)} y={M.top - 8 - row * 11} fontSize={10} textAnchor="middle" fill="var(--muted)">
+              §{i + 1}
+              <title>
+                §{i + 1} {h.title}
+              </title>
+            </text>
+          </g>
+        );
+      })}
       {axes.map((a, i) => {
         const dim = hovered && hovered !== a;
         const segs = [];
