@@ -64,7 +64,7 @@ export default function TimelineChart({
         return (
           <g key={h.title}>
             <line x1={x(h.part)} x2={x(h.part)} y1={M.top - 4} y2={H - M.bottom} stroke="var(--line)" strokeDasharray="2 3" />
-            <text x={x(h.part)} y={M.top - 8 - row * 11} fontSize={10} textAnchor="middle" fill="var(--muted)">
+            <text x={x(h.part)} y={M.top - 8 - row * 11} fontSize={10} textAnchor="middle" fill="var(--muted)" className="font-latin">
               §{i + 1}
               <title>
                 §{i + 1} {h.title}

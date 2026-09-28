@@ -48,7 +48,7 @@ export default function WorkColumn({
           id="highlight"
           value=""
           onChange={(e) => e.target.value !== "" && onJump(Number(e.target.value))}
-          className="mt-1 w-full rounded border border-line bg-panel px-2 py-1 text-sm"
+          className="font-latin mt-1 w-full rounded border border-line bg-panel px-2 py-1 text-sm"
         >
           <option value="">選んで移動…</option>
           {work.highlights.map((h, i) => (

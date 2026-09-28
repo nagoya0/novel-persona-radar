@@ -24,6 +24,12 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Latin glyphs (§, digits) from a Latin face, Japanese from the usual one. The Japanese face draws
+   § full-width, which leaves a gap before a half-width number. */
+.font-latin {
+  font-family: Arial, Helvetica, var(--font-sans-jp), sans-serif;
+}
+
 /* The novel column (ADR 0014). */
 .tategaki {
   writing-mode: vertical-rl;
