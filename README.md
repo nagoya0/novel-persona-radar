@@ -11,9 +11,10 @@ them.
 
 ## Demo
 
-<!-- Link and screenshot to be added once the site is deployed. -->
+**[novel-persona-radar.vercel.app](https://novel-persona-radar.vercel.app/)** — designed for
+desktop browsers at least 1280 pixels wide.
 
-The demo is designed for desktop browsers at least 1280 pixels wide.
+For example, [near the end of *Run, Melos!* with the king selected](https://novel-persona-radar.vercel.app/works/run-melos?part=27&character=king).
 
 ## What you see
 

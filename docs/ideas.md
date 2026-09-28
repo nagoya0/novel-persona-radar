@@ -6,11 +6,11 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 
 Decided but not built yet, roughly in order:
 
-1. **Deploy to Vercel** ([ADR 0029](adr/0029-host-on-vercel.md)).
-2. **README demo section**: a link to the deployed site. Whether to add a screenshot or a video
-   (which would also serve as the narrow-screen fallback,
-   [ADR 0012](adr/0012-desktop-browser-first.md)) is undecided; capture it from the deployed site,
-   not the dev server.
+1. **Screenshot or video** for the README demo section, which would also serve as the
+   narrow-screen fallback ([ADR 0012](adr/0012-desktop-browser-first.md)); which one is undecided.
+   Capture it from the deployed site, not the dev server.
+2. **Link previews.** Pages have a title and description but no Open Graph tags or preview image,
+   which [ADR 0023](adr/0023-nextjs-static-export.md) planned per work.
 3. **Licence and a fresh pre-release audit** before making the repository public. The audit
    includes the ADRs: check that each records what was actually agreed, not an assumption.
 
