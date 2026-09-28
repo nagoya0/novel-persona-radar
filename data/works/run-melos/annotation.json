@@ -28,7 +28,7 @@
     {"id": "sister", "judged": true, "name": "メロスの妹", "names": ["妹", "花嫁", "新婦"], "firstMention": 0, "firstOnStage": 26, "intro": "メロスの十六歳の妹。内気な娘で、兄と二人で暮らしている。近く結婚を控えている。"},
     {"id": "groom", "judged": true, "name": "花婿", "names": ["花婿", "婿", "亭主", "新郎"], "firstMention": 0, "firstOnStage": 31, "intro": "メロスの妹の花婿となる、村の律気な牧人。"},
     {"id": "philostratus", "judged": true, "name": "フィロストラトス", "names": ["フィロストラトス", "若い石工", "弟子"], "firstMention": 50, "firstOnStage": 50, "intro": "セリヌンティウスの弟子の、若い石工。"},
-    {"id": "bandits", "judged": false, "name": "山賊", "names": ["山賊"], "firstMention": 38, "firstOnStage": 38, "intro": "峠でメロスの行く手に躍り出た、山賊の一隊。"},
+    {"id": "bandits", "judged": true, "name": "山賊", "names": ["山賊"], "firstMention": 38, "firstOnStage": 38, "intro": "峠でメロスの行く手に躍り出た、山賊の一隊。"},
     {"id": "crowd", "judged": false, "name": "群衆", "names": ["群衆"], "firstMention": 60, "firstOnStage": 60, "intro": "刑場に集まった、シラクスの市の人々。"},
     {"id": "travellers", "judged": false, "name": "旅人", "names": ["旅人"], "firstMention": 49, "firstOnStage": 49, "intro": "メロスとすれちがった、一団の旅人。"},
     {"id": "girl", "judged": false, "name": "少女", "names": ["少女", "娘さん"], "firstMention": 71, "firstOnStage": 71, "intro": "刑場にいた、ひとりの少女。"}
