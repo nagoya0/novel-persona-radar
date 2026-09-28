@@ -13,4 +13,5 @@ Store and display those credits with every work.
 
 ## Consequences
 
-The text importer must parse and keep the colophon rather than strip it.
+The credits are copied from the source's colophon into the work's annotation file
+([ADR 0019](0019-work-annotation-files.md)) and shown at the bottom of the work column.

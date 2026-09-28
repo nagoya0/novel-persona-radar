@@ -30,6 +30,9 @@ The division of labour:
 - **Jev (per paragraph):** trait judgments, and presence where names alone miss it
   ([ADR 0017](0017-presence-gate.md)).
 
+*Amended 2026-09-28:* presence is no longer asked of Jev; the annotation records it for every
+paragraph ([ADR 0032](0032-on-stage-profiles-and-two-first-appearances.md)).
+
 ## Consequences
 
 The README states that annotations were drafted with AI assistance and reviewed by a person.

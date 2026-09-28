@@ -48,3 +48,7 @@ absorb them. A separate *reputation* profile built from mentions is a possible l
   the choice comes back once they appear.
 - Joining the list and stepping on stage are animated: a new avatar pops in, and the grey "？"
   fades to the character's colour.
+
+*Amended 2026-09-29:* the character list shows only judged characters, and a character not yet on
+stage shows a note that they have not appeared instead of their introduction
+([ADR 0040](0040-work-column.md)).

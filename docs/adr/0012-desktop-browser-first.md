@@ -23,3 +23,7 @@ a desktop browser, together with a recorded video of the demo in use.
 
 No layout work for phones or tablets in portrait. The demo video, which the README needs anyway,
 doubles as the narrow-screen fallback, so visitors on a phone still see the idea working.
+
+*Amended 2026-09-29:* whether the README and the narrow-screen fallback show a video or a
+screenshot is reopened ([ideas](../ideas.md)). Until it is decided, narrow screens show the note
+only.

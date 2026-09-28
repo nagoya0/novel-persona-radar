@@ -38,3 +38,8 @@ Change over time is no longer drawn as lines; it shows as movement in the rankin
 during autoplay. The king's change of heart in *Run, Melos!* reads as *怖い人*, *独裁者* and *鬼*
 falling while *水に流せる* and *情に厚い* rise. The accumulated values are computed as before
 ([ADR 0002](0002-model-judges-code-accumulates.md), [ADR 0004](0004-older-paragraphs-fade.md)).
+
+*Amended 2026-09-29:* with the radar and ranking on screen, the values need no normalisation. Where
+evidence is strong, many traits score near the maximum in a single paragraph, but the weighted
+accumulation keeps most values between 2 and 3 out of 4
+([ADR 0035](0035-trait-dictionary-from-screening.md)), and the ranking reads naturally.

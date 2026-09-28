@@ -5,8 +5,7 @@
 
 ## Context
 
-The page moves a lot: text fades between parts, charts morph, and autoplay keeps this going for
-half a minute. Some people get dizzy or nauseous from on-screen motion and turn on their operating
+The page moves a lot: text fades between parts, charts morph, and autoplay keeps this going. Some people get dizzy or nauseous from on-screen motion and turn on their operating
 system's reduce-motion setting, which browsers expose as `prefers-reduced-motion`.
 
 ## Decision

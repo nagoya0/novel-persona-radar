@@ -6,19 +6,19 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 
 Decided but not built yet, roughly in order:
 
-1. **README with a demo video**, doubling as the narrow-screen fallback
-   ([ADR 0012](adr/0012-desktop-browser-first.md)); mention the page bar and deep links.
-2. **Deploy to Vercel** ([ADR 0029](adr/0029-host-on-vercel.md)).
+1. **Deploy to Vercel** ([ADR 0029](adr/0029-host-on-vercel.md)).
+2. **README demo section**: a link to the deployed site. Whether to add a screenshot or a video
+   (which would also serve as the narrow-screen fallback,
+   [ADR 0012](adr/0012-desktop-browser-first.md)) is undecided; capture it from the deployed site,
+   not the dev server.
 3. **Licence and a fresh pre-release audit** before making the repository public. The audit
    includes the ADRs: check that each records what was actually agreed, not an assumption.
 
 ## Features
 
-- **Jump to the evidence.** Clicking a spike in the chart jumps to the paragraph that caused it
-  ("this line sent *sense of justice* up"). Jev does not explain its answers; the paragraph itself
-  can serve as the explanation.
-- **Spoiler-free character profiles.** The profile only ever uses the text up to the reader's
-  current position, so it can be shown without giving the story away.
+- **Jump to the evidence.** Clicking a trait in the ranking or on the radar jumps to the paragraph
+  that raised it most ("this line sent *sense of justice* up"). Jev does not explain its answers;
+  the paragraph itself can serve as the explanation.
 - **Decay slider.** Let the viewer change how fast older paragraphs fade
   ([ADR 0004](adr/0004-older-paragraphs-fade.md)). The king in *Run, Melos!* is the showcase:
   with a fast decay his suspicion visibly drops at the end.
@@ -31,8 +31,9 @@ Decided but not built yet, roughly in order:
 ## Interface
 
 Proposed, not yet decided. Decided so far: layout ([ADR 0013](adr/0013-three-column-layout.md)),
-analysis column ([ADR 0038](adr/0038-current-radar-and-trait-ranking.md)), character list
-([ADR 0032](adr/0032-on-stage-profiles-and-two-first-appearances.md)).
+analysis column ([ADR 0038](adr/0038-current-radar-and-trait-ranking.md)), reading controls
+([ADR 0039](adr/0039-reading-controls.md)), work column ([ADR 0040](adr/0040-work-column.md)),
+autoplay ([ADR 0041](adr/0041-autoplay-button.md)).
 
 - **Evidence in the text.** Mark the paragraphs that gave evidence for the selected character;
   hovering a trait in the ranking or on the radar highlights its evidence.
@@ -72,10 +73,6 @@ Tested and worked, but outside this project's scope for now:
 - **Speakers absorbing what they describe.** In the screening run, the old man, who only reports the
   king's cruelty, came out *suspicious*, *cruel* and *domineering* himself. The reverse of
   *characters seen through others*: describing a trait is read as having it.
-- **Accumulation.** Where evidence is strong, many traits score near the maximum at once in a single
-  paragraph. Over the whole of *Run, Melos!*, weighted accumulation kept most values between 2 and 3
-  out of 4 ([ADR 0035](adr/0035-trait-dictionary-from-screening.md)), so no normalisation for now;
-  revisit when the charts are on screen.
 - **Characters seen through others.** In paragraph 20 the king privately calls Melos a liar while
   Melos is on stage; Jev gave Melos *deceitful* evidence 0.53 with a score of 0.8. Paragraph-level
   annotation cannot separate such opinions from direct evidence (see [ADR 0032](adr/0032-on-stage-profiles-and-two-first-appearances.md)).

@@ -22,3 +22,8 @@ its effect showed.
 ## Consequences
 
 No separate axis panel. The number of axes is no longer adjustable.
+
+*Amended 2026-09-29:* the timeline was dropped ([ADR 0038](0038-current-radar-and-trait-ranking.md)),
+so six axes are kept for a readable shape alone. The note for a character who has not appeared is
+never needed: the analysis column only offers characters already on stage
+([ADR 0032](0032-on-stage-profiles-and-two-first-appearances.md)).

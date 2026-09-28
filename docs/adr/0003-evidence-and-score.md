@@ -15,7 +15,9 @@ Asked for a score about a character who is not in the paragraph, the model still
 
 ## Decision
 
-For each character and trait, ask two questions: whether the paragraph gives any evidence about the trait (a probability), and how strongly the trait fits (a score). Weight each score by its evidence probability when accumulating. A trait with little accumulated evidence is drawn grey, as *unknown*, rather than as a value.
+For each character and trait, ask two questions: whether the paragraph gives any evidence about the trait (a probability), and how strongly the trait fits (a score). Weight each score by its evidence probability when accumulating. A trait with little accumulated evidence is drawn grey, as *unknown*, rather than as a value
+(on screen: 印象なし on the radar, and left out of the ranking,
+[ADR 0038](0038-current-radar-and-trait-ranking.md)).
 
 ## Consequences
 
