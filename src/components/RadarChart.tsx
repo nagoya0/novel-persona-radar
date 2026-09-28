@@ -54,16 +54,36 @@ export default function RadarChart({
         ))}
         {axes.map((a, i) => {
           const [x, y] = point(i, R);
+          // Too little evidence so far: the judgment is held back, and the axis says so (ADR 0003).
+          const pending = !emptyMessage && accumulated[a]?.value === null;
+          const [tx, ty] = point(i, R * 0.62);
           return (
-            <line
-              key={a}
-              x1={0}
-              y1={0}
-              x2={x}
-              y2={y}
-              stroke={AXIS_COLORS[i]}
-              strokeOpacity={hovered && hovered !== a ? 0.1 : 0.35}
-            />
+            <g key={a}>
+              <line
+                x1={0}
+                y1={0}
+                x2={x}
+                y2={y}
+                stroke={pending ? "var(--muted)" : AXIS_COLORS[i]}
+                strokeOpacity={hovered && hovered !== a ? 0.1 : 0.35}
+              />
+              {pending && (
+                <text
+                  x={tx}
+                  y={ty}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fontSize={11}
+                  fill="var(--muted)"
+                  fillOpacity={0.7}
+                  stroke="var(--panel)"
+                  strokeWidth={3}
+                  paintOrder="stroke"
+                >
+                  保留
+                </text>
+              )}
+            </g>
           );
         })}
         {!emptyMessage && (
@@ -109,7 +129,6 @@ export default function RadarChart({
             {traits.map((t) => (
               <option key={t.id} value={t.id} style={{ color: "var(--foreground)" }}>
                 {label(t.id)}
-                {t.id === a && !known ? " ？" : ""}
               </option>
             ))}
           </select>
