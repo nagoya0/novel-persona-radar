@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Copyright from "@/components/Copyright";
 import { listWorks } from "@/lib/works";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
           </li>
         ))}
       </ul>
+      <Copyright className="mt-16" />
     </main>
   );
 }

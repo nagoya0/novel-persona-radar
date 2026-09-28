@@ -1,6 +1,6 @@
 "use client";
 
-import { MotionConfig } from "motion/react";
+import { MotionConfig, motion } from "motion/react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { packParts, partOfParagraph } from "@/core/parts";
 import { buildProfile } from "@/core/profile";
@@ -8,6 +8,7 @@ import { revealParts } from "@/core/reveal";
 import type { WorkData } from "@/core/types";
 import type { WorkSummary } from "@/lib/works";
 import AnalysisColumn from "./AnalysisColumn";
+import Copyright from "./Copyright";
 import TextColumn from "./TextColumn";
 import WorkColumn from "./WorkColumn";
 
@@ -27,18 +28,30 @@ function Toggle<T extends string>({
   options: [T, string][];
   onChange: (v: T) => void;
 }) {
+  // A segmented switch: the selected option sits on a thumb that slides between options. The
+  // options name themselves, so the label is for screen readers only.
   return (
-    <div className="flex items-center gap-1">
-      <span className="mr-1 text-muted">{label}</span>
-      {options.map(([v, text]) => (
-        <button
-          key={v}
-          onClick={() => onChange(v)}
-          className={`rounded px-2 py-0.5 ${value === v ? "bg-foreground text-panel" : "text-muted hover:text-foreground"}`}
-        >
-          {text}
-        </button>
-      ))}
+    <div className="flex items-center">
+      <div role="radiogroup" aria-label={label} className="flex rounded-full bg-line p-0.5">
+        {options.map(([v, text]) => (
+          <button
+            key={v}
+            role="radio"
+            aria-checked={value === v}
+            onClick={() => onChange(v)}
+            className={`relative rounded-full px-3 py-0.5 transition-colors ${value === v ? "text-foreground" : "text-muted hover:text-foreground"}`}
+          >
+            {value === v && (
+              <motion.span
+                layoutId={`${label}-thumb`}
+                className="absolute inset-0 rounded-full bg-panel shadow-sm"
+                transition={{ type: "spring", stiffness: 500, damping: 35 }}
+              />
+            )}
+            <span className="relative">{text}</span>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
@@ -137,6 +150,7 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
               ]}
               onChange={setTypeface}
             />
+            <Copyright />
           </div>
         </header>
         <main className="grid min-h-0 flex-1 grid-cols-[clamp(240px,16vw,320px)_minmax(0,1fr)_clamp(420px,27vw,520px)]">
