@@ -21,18 +21,20 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 ## Interface
 
 Proposed, not yet decided. Decided so far: layout ([ADR 0013](adr/0013-three-column-layout.md)),
-analysis charts ([ADR 0020](adr/0020-radar-and-timeline.md)), character list
-([ADR 0022](adr/0022-characters-appear-as-met.md)).
+analysis column ([ADR 0038](adr/0038-current-radar-and-trait-ranking.md)), character list
+([ADR 0032](adr/0032-on-stage-profiles-and-two-first-appearances.md)).
 
 - **Evidence in the text.** Mark the paragraphs that gave evidence for the selected character;
-  hovering a trait on the radar highlights its evidence.
+  hovering a trait in the ranking or on the radar highlights its evidence.
 - **Reputation.** A second profile built from paragraphs where a character is only mentioned
   ([ADR 0032](adr/0032-on-stage-profiles-and-two-first-appearances.md)): what others say before the
   reader meets them, against who they turn out to be. Fits *Run, Melos!*, a story about trust.
   How to draw it alongside the profile is the open part.
-- **Compare two characters** on the same radar (Melos and the king).
-- **Detect highlights from the data.** The parts where the charts move most
+- **Compare two characters**, e.g. their rankings side by side (Melos and the king).
+- **Detect highlights from the data.** The parts where the ranking moves most
   ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
+- **Remaining animation.** The radar morphing between parts, and the text fading between parts
+  ([ADR 0013](adr/0013-three-column-layout.md)).
 
 ## Translation choices ([ADR 0011](adr/0011-translation-decisions.md))
 

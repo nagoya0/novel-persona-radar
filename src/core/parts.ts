@@ -19,8 +19,6 @@ export interface Part {
   starts: number[];
   /** Every paragraph with any text in this part, including the continuation of a split one. */
   shows: number[];
-  firstParagraph: number;
-  lastParagraph: number;
 }
 
 const segLength = (s: Segment) => (typeof s === "string" ? s.length : s.rb.length);
@@ -83,8 +81,6 @@ export function packParts(paragraphs: Paragraph[], budget: number): Part[] {
       chunks,
       starts: chunks.filter((c) => c.startsParagraph).map((c) => c.paragraph),
       shows: [...new Set(chunks.map((c) => c.paragraph))],
-      firstParagraph: chunks[0].paragraph,
-      lastParagraph: chunks[chunks.length - 1].paragraph,
     });
     chunks = [];
     len = 0;

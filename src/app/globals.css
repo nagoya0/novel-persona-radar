@@ -44,3 +44,11 @@ body {
   font-size: 0.5em;
   letter-spacing: 0;
 }
+
+/* CSS transitions follow the reduce-motion setting too (ADR 0021). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  .avatar * {
+    transition: none !important;
+  }
+}

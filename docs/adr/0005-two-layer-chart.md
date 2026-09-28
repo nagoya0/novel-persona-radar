@@ -1,6 +1,6 @@
 # 5. Show the current paragraph and the accumulated profile together
 
-- Status: Accepted
+- Status: Superseded by [0038](0038-current-radar-and-trait-ranking.md)
 - Date: 2026-09-27
 
 ## Context

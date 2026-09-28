@@ -1,22 +1,26 @@
 import Link from "next/link";
+import type { Reveal } from "@/core/reveal";
 import type { WorkData } from "@/core/types";
 import type { WorkSummary } from "@/lib/works";
+import { AnimatePresence, motion } from "motion/react";
 import Avatar from "./Avatar";
 
 export default function WorkColumn({
   work,
   works,
-  position,
+  part,
+  reveal,
   onJump,
 }: {
   work: WorkData;
   works: WorkSummary[];
-  position: number;
+  part: number;
+  reveal: Record<string, Reveal>;
   onJump: (paragraph: number) => void;
 }) {
   // Characters appear from their first mention; their introduction stays hidden until they
   // appear on stage (ADR 0032).
-  const known = work.characters.filter((c) => c.firstMention <= position);
+  const known = work.characters.filter((c) => reveal[c.id].mention <= part);
   return (
     <aside className="flex min-h-0 flex-col gap-5 overflow-y-auto border-r border-line bg-panel p-5">
       <section>
@@ -62,15 +66,29 @@ export default function WorkColumn({
       <section>
         <h2 className="text-xs text-muted">登場人物</h2>
         <ul className="mt-2 grid grid-cols-2 gap-x-2 gap-y-3">
-          {known.map((c) => {
-            const met = c.firstOnStage <= position;
-            return (
-              <li key={c.id} className="flex flex-col items-center text-center" title={met ? c.intro : "？"}>
-                <Avatar id={c.id} unknown={!met} />
-                <span className={`mt-1 text-xs leading-tight ${met ? "" : "text-muted"}`}>{c.name}</span>
-              </li>
-            );
-          })}
+          <AnimatePresence initial={false} mode="popLayout">
+            {known.map((c) => {
+              const met = reveal[c.id].onStage <= part;
+              return (
+                // A newly mentioned character pops in; the others slide to their new cells.
+                <motion.li
+                  key={c.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.6 }}
+                  transition={{ type: "spring", stiffness: 380, damping: 22 }}
+                  className="flex flex-col items-center text-center"
+                  title={met ? c.intro : "？"}
+                >
+                  <Avatar id={c.id} unknown={!met} />
+                  <span className={`mt-1 text-xs leading-tight transition-colors duration-700 ${met ? "" : "text-muted"}`}>
+                    {c.name}
+                  </span>
+                </motion.li>
+              );
+            })}
+          </AnimatePresence>
         </ul>
       </section>
 

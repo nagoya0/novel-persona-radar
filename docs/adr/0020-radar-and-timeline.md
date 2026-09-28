@@ -1,6 +1,6 @@
 # 20. The analysis column: a radar for now, a timeline for how it got there
 
-- Status: Accepted
+- Status: Superseded by [0038](0038-current-radar-and-trait-ranking.md)
 - Date: 2026-09-28
 
 ## Context

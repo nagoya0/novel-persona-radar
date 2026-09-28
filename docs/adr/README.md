@@ -6,7 +6,7 @@
 | 0002 | [The model judges; the code accumulates](0002-model-judges-code-accumulates.md) | Accepted |
 | 0003 | [Ask for evidence and score separately](0003-evidence-and-score.md) | Accepted |
 | 0004 | [Older paragraphs fade](0004-older-paragraphs-fade.md) | Accepted |
-| 0005 | [Show the current paragraph and the accumulated profile together](0005-two-layer-chart.md) | Accepted |
+| 0005 | [Show the current paragraph and the accumulated profile together](0005-two-layer-chart.md) | Superseded by 0038 |
 | 0006 | [Give each paragraph some context](0006-context-for-each-paragraph.md) | Superseded by 0030 |
 | 0007 | [Draw the chart's axes at random](0007-random-axes.md) | Superseded by 0016 |
 | 0008 | [Replay recorded judgments in the public demo](0008-replay-in-the-demo.md) | Accepted |
@@ -21,7 +21,7 @@
 | 0017 | [Discard judgments for characters who are not in the paragraph](0017-presence-gate.md) | Superseded by 0031 |
 | 0018 | [Judge the whole text; shorten the visit with highlights and autoplay](0018-highlights-and-autoplay.md) | Accepted |
 | 0019 | [Annotate each work once, with AI assistance and human review](0019-work-annotation-files.md) | Accepted |
-| 0020 | [The analysis column: a radar for now, a timeline for how it got there](0020-radar-and-timeline.md) | Accepted |
+| 0020 | [The analysis column: a radar for now, a timeline for how it got there](0020-radar-and-timeline.md) | Superseded by 0038 |
 | 0021 | [Arrow-key navigation and reduced motion](0021-keyboard-and-reduced-motion.md) | Accepted |
 | 0022 | [Characters appear as the reader meets them](0022-characters-appear-as-met.md) | Superseded by 0032 |
 | 0023 | [Next.js with static export](0023-nextjs-static-export.md) | Accepted |
@@ -39,3 +39,4 @@
 | 0035 | [Choose the trait dictionary by screening a whole work](0035-trait-dictionary-from-screening.md) | Accepted |
 | 0036 | [Fit the text size to the screen; design for 1920 × 1080](0036-fit-text-size-to-the-screen.md) | Accepted |
 | 0037 | [Six axes, chosen on the radar itself](0037-six-axes-chosen-on-the-radar.md) | Accepted |
+| 0038 | [A radar for the current part, a ranking for the story so far](0038-current-radar-and-trait-ranking.md) | Accepted |

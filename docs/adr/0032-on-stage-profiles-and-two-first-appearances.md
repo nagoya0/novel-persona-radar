@@ -37,3 +37,14 @@ judged.
 Hearsay never enters a profile. Opinions voiced by others in a scene where the character is also on
 stage (the king calling Melos a liar to his face) are not separated out; evidence weighting has to
 absorb them. A separate *reputation* profile built from mentions is a possible later feature.
+
+*Amended 2026-09-28:*
+
+- When the paragraph of a first mention or first appearance is split across parts, the character is
+  revealed in the part whose text contains one of their names, not where the paragraph starts. The
+  old man in *Run, Melos!* appears only in the second half of paragraph 0.
+- The analysis column offers only characters already on stage. If the chosen character has not
+  appeared yet at the current point (after jumping back), the first character on stage is shown;
+  the choice comes back once they appear.
+- Joining the list and stepping on stage are animated: a new avatar pops in, and the grey "？"
+  fades to the character's colour.

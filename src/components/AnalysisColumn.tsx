@@ -1,45 +1,34 @@
-import type { Part } from "@/core/parts";
 import type { PartProfile } from "@/core/profile";
+import type { Reveal } from "@/core/reveal";
 import type { WorkData } from "@/core/types";
-import { ACCUMULATED_COLOR, CURRENT_COLOR } from "./colors";
 import RadarChart from "./RadarChart";
-import TimelineChart from "./TimelineChart";
+import TraitRanking from "./TraitRanking";
 import type { LabelStyle } from "./WorkView";
 
 export default function AnalysisColumn({
   work,
-  parts,
   part,
-  position,
+  reveal,
   profile,
   character,
   onCharacter,
   axes,
   onAxes,
   labelStyle,
-  hovered,
-  onHover,
-  onJumpPart,
 }: {
   work: WorkData;
-  parts: Part[];
   part: number;
-  position: number;
+  reveal: Record<string, Reveal>;
   profile: PartProfile[];
   character: string;
   onCharacter: (id: string) => void;
   axes: string[];
   onAxes: (axes: string[]) => void;
   labelStyle: LabelStyle;
-  hovered: string | null;
-  onHover: (id: string | null) => void;
-  onJumpPart: (part: number) => void;
 }) {
   const traits = new Map(work.traits.map((t) => [t.id, t]));
   const label = (id: string) => traits.get(id)!.ja[labelStyle];
-  const selectable = work.characters.filter((c) => c.judged && c.firstMention <= position);
-  const current = work.characters.find((c) => c.id === character)!;
-  const onStageYet = current.firstOnStage <= position;
+  const selectable = work.characters.filter((c) => c.judged && reveal[c.id].onStage <= part);
 
   // Choosing a trait already on another axis swaps the two, so no trait appears twice.
   const changeAxis = (index: number, trait: string) => {
@@ -85,40 +74,15 @@ export default function AnalysisColumn({
           traits={work.traits}
           label={label}
           current={profile[part].current}
-          accumulated={profile[part].accumulated}
-          emptyMessage={onStageYet ? null : `${current.name}はまだ登場していません`}
-          hovered={hovered}
-          onHover={onHover}
           onAxisChange={changeAxis}
           onRandom={random}
         />
-        <div className="flex justify-center gap-4 text-[11px] text-muted">
-          <span className="flex items-center gap-1">
-            <i className="inline-block h-2.5 w-2.5 rounded-sm" style={{ background: ACCUMULATED_COLOR, opacity: 0.5 }} />
-            ここまでの人物像
-          </span>
-          <span className="flex items-center gap-1">
-            <i className="inline-block h-2.5 w-2.5 rounded-sm" style={{ background: CURRENT_COLOR, opacity: 0.6 }} />
-            このパートの印象
-          </span>
-        </div>
+        <div className="text-center text-[11px] text-muted">このパートの印象</div>
       </section>
 
-      <section className="rounded border border-line bg-background/40 p-2">
-        <TimelineChart
-          axes={axes}
-          label={label}
-          profile={profile}
-          part={part}
-          highlights={work.highlights.map((h) => ({
-            ...h,
-            part: parts.findIndex((p) => p.chunks.some((c) => c.paragraph === h.paragraph)),
-          }))}
-          hovered={hovered}
-          onHover={onHover}
-          onJumpPart={onJumpPart}
-        />
-        <div className="text-center text-[11px] text-muted">印象値の変遷</div>
+      <section>
+        <h3 className="mb-2 text-xs text-muted">ここまでの人物像ランキング</h3>
+        <TraitRanking traits={work.traits} label={label} accumulated={profile[part].accumulated} />
       </section>
 
       <section className="mt-auto border-t border-line pt-3 text-xs leading-relaxed text-muted">
@@ -132,7 +96,7 @@ export default function AnalysisColumn({
             」に渡し、場面にいる人物ごとに、30の性格について「手がかりがあるか」と「どれくらい当てはまるか」を判定させています。
           </li>
           <li>
-            判定を手がかりの強さで重み付けして積み上げ、古い場面ほど少しずつ薄れるようにしています。灰色が積み上げた人物像、その上に重ねた朱色がこのパートだけの印象です。
+            判定を手がかりの強さで重み付けして積み上げ、古い場面ほど少しずつ薄れるようにしています。レーダーチャートはこのパートだけの印象、ランキングは積み上げた人物像です。
           </li>
           <li>登場人物の呼び名や、誰が話しているかといった注釈は、AI（Claude）が下書きし、人が確認しています。</li>
           <li>判定は事前に済ませてあり、このページを見るたびに AI を呼んでいるわけではありません。</li>

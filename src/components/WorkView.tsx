@@ -1,8 +1,10 @@
 "use client";
 
+import { MotionConfig } from "motion/react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { packParts, partOfParagraph } from "@/core/parts";
 import { buildProfile } from "@/core/profile";
+import { revealParts } from "@/core/reveal";
 import type { WorkData } from "@/core/types";
 import type { WorkSummary } from "@/lib/works";
 import AnalysisColumn from "./AnalysisColumn";
@@ -49,7 +51,6 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
   // Trait labels are always the casual ones; the formal labels stay in the dictionary.
   const labelStyle: LabelStyle = "casual";
   const [typeface, setTypeface] = useState<Typeface>("serif");
-  const [hovered, setHovered] = useState<string | null>(null);
 
   const go = useCallback((i: number) => setPart(Math.max(0, Math.min(parts.length - 1, i))), [parts.length]);
 
@@ -81,17 +82,22 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
     }),
     [parts],
   );
-  const position = parts[part].lastParagraph;
+  const reveal = useMemo(() => revealParts(parts, work.characters), [parts, work]);
+  // Only characters already on stage can be analysed. If the chosen one has not appeared yet at
+  // this point (after jumping back), show the first who has; the choice returns once they appear.
+  const onStage = work.characters.filter((c) => c.judged && reveal[c.id].onStage <= part);
+  const shown = onStage.some((c) => c.id === character) ? character : (onStage[0]?.id ?? character);
   const traitIds = work.traits.map((t) => t.id);
   const profile = useMemo(
-    () => buildProfile(work.judgments, character, parts, traitIds),
+    () => buildProfile(work.judgments, shown, parts, traitIds),
     // traitIds is derived from work
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [work, character, parts],
+    [work, shown, parts],
   );
 
   return (
-    <>
+    // Follows the operating system's reduce-motion setting (ADR 0021).
+    <MotionConfig reducedMotion="user">
       <div className="flex h-full flex-col min-[1280px]:hidden items-center justify-center p-8 text-center">
         <p className="text-lg">このデモはパソコンのブラウザ向けです。</p>
         <p className="mt-2 text-muted">横幅 1280px 以上の画面でご覧ください。</p>
@@ -115,7 +121,8 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
           <WorkColumn
             work={work}
             works={works}
-            position={position}
+            part={part}
+            reveal={reveal}
             onJump={(paragraph) => go(partOfParagraph(parts, paragraph))}
           />
           <TextColumn
@@ -130,21 +137,17 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
           />
           <AnalysisColumn
             work={work}
-            parts={parts}
             part={part}
-            position={position}
+            reveal={reveal}
             profile={profile}
-            character={character}
+            character={shown}
             onCharacter={setCharacter}
             axes={axes}
             onAxes={setAxes}
             labelStyle={labelStyle}
-            hovered={hovered}
-            onHover={setHovered}
-            onJumpPart={go}
           />
         </main>
       </div>
-    </>
+    </MotionConfig>
   );
 }
