@@ -64,7 +64,8 @@ export default function TimelineChart({
       {axes.map((a, i) => {
         const dim = hovered && hovered !== a;
         const segs = [];
-        for (let k = 1; k < n; k++) {
+        // Only up to where the reader is: later parts would give the story away.
+        for (let k = 1; k <= part; k++) {
           const p0 = profile[k - 1].accumulated[a];
           const p1 = profile[k].accumulated[a];
           if (p0?.value == null || p1?.value == null) continue;

@@ -25,6 +25,8 @@ In the timeline:
   the evidence is thin. A trait the story never addresses never appears.
 - Line colours match the radar's axes, so the radar serves as the legend.
 - Hovering a line, or an axis on the radar, emphasises that trait in both charts and dims the rest.
+- Lines are drawn only up to the current position, so the timeline never shows what happens
+  later in the story; they extend as the reader moves on.
 - A marker shows the current position; highlight scenes ([ADR 0018](0018-highlights-and-autoplay.md))
   are labelled along the top; clicking a sharp change jumps to that part.
 
