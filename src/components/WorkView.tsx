@@ -68,6 +68,9 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
   // Vertical text reads right to left: ← is next, → is previous (ADR 0021).
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      // Leave arrow keys to the page slider and the axis dropdowns while they have focus.
+      const target = e.target as HTMLElement | null;
+      if (target?.closest("input, select, textarea")) return;
       if (e.key === "ArrowLeft") go(part + 1);
       if (e.key === "ArrowRight") go(part - 1);
     };
@@ -133,6 +136,7 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
             maxParagraphs={fullest.paragraphs}
             onNext={() => go(part + 1)}
             onPrev={() => go(part - 1)}
+            onJump={go}
             typeface={typeface}
           />
           <AnalysisColumn
