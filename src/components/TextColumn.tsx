@@ -89,7 +89,7 @@ export default function TextColumn({
   const face = typeface === "sans" ? "font-sans" : "font-serif";
   const nav = `flex w-12 shrink-0 flex-col items-center justify-center gap-1 text-muted hover:bg-line disabled:opacity-20 ${face}`;
   return (
-    <section className="flex min-h-0 min-w-0 flex-col border-r border-line">
+    <section className="relative flex min-h-0 min-w-0 flex-col border-r border-line">
       <div className="flex min-h-0 flex-1 items-stretch">
         {/* Next is on the left, as in a printed book. */}
         <button onClick={onNext} disabled={index === total - 1} className={nav} aria-label="次へ">
@@ -110,7 +110,10 @@ export default function TextColumn({
           <span className="text-sm">前</span>
         </button>
       </div>
-      <div className={`flex h-10 shrink-0 items-center justify-center text-sm tracking-widest text-muted ${face}`}>
+      {/* The page count sits over the bottom margin, so top and bottom margins stay equal. */}
+      <div
+        className={`pointer-events-none absolute inset-x-0 bottom-0 flex h-8 items-center justify-center text-sm tracking-widest text-muted ${face}`}
+      >
         {index + 1} / {total}
       </div>
     </section>
