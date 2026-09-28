@@ -3,6 +3,7 @@ import type { Reveal } from "@/core/reveal";
 import type { WorkData } from "@/core/types";
 import type { WorkSummary } from "@/lib/works";
 import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
 import Avatar from "./Avatar";
 
 export default function WorkColumn({
@@ -18,9 +19,11 @@ export default function WorkColumn({
   reveal: Record<string, Reveal>;
   onJump: (paragraph: number) => void;
 }) {
-  // Characters appear from their first mention; their introduction stays hidden until they
-  // appear on stage (ADR 0032).
-  const known = work.characters.filter((c) => reveal[c.id].mention <= part);
+  // The judged characters, as in the analysis column. They appear from their first mention; their
+  // introduction stays hidden until they appear on stage (ADR 0032).
+  const known = work.characters.filter((c) => c.judged && reveal[c.id].mention <= part);
+  const [pointed, setPointed] = useState<string | null>(null);
+  const shown = known.find((c) => c.id === pointed);
   return (
     <aside className="flex min-h-0 flex-col gap-5 overflow-y-auto border-r border-line bg-panel p-5">
       <section>
@@ -64,8 +67,8 @@ export default function WorkColumn({
       </section>
 
       <section>
-        <h2 className="text-xs text-muted">登場人物</h2>
-        <ul className="mt-2 grid grid-cols-2 gap-x-2 gap-y-3">
+        <h2 className="text-xs text-muted">主な登場人物</h2>
+        <ul className="mt-2 grid grid-cols-2 gap-x-2 gap-y-3" onMouseLeave={() => setPointed(null)}>
           <AnimatePresence initial={false} mode="popLayout">
             {known.map((c) => {
               const met = reveal[c.id].onStage <= part;
@@ -78,8 +81,11 @@ export default function WorkColumn({
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.6 }}
                   transition={{ type: "spring", stiffness: 380, damping: 22 }}
-                  className="flex flex-col items-center text-center"
-                  title={met ? c.intro : "？"}
+                  className="flex cursor-default flex-col items-center rounded text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-line"
+                  tabIndex={0}
+                  onMouseEnter={() => setPointed(c.id)}
+                  onFocus={() => setPointed(c.id)}
+                  onBlur={() => setPointed(null)}
                 >
                   <Avatar id={c.id} unknown={!met} />
                   <span className={`mt-1 text-xs leading-tight transition-colors duration-700 ${met ? "" : "text-muted"}`}>
@@ -91,6 +97,15 @@ export default function WorkColumn({
           </AnimatePresence>
         </ul>
       </section>
+
+      {/* The pointed character's introduction; hidden until they appear on stage (ADR 0040). */}
+      {shown && (
+        <section className="rounded border border-line p-3" aria-live="polite">
+          <p className="text-xs leading-relaxed">
+            {reveal[shown.id].onStage <= part ? shown.intro : <span className="text-muted">まだ登場していません。</span>}
+          </p>
+        </section>
+      )}
 
       <section className="mt-auto border-t border-line pt-3 text-[10px] leading-relaxed text-muted">
         <p>
