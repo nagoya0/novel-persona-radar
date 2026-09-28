@@ -111,6 +111,7 @@ export default function AnalysisColumn({
           onHover={onHover}
           onJumpPart={onJumpPart}
         />
+        <div className="text-center text-[11px] text-muted">印象値の変遷</div>
       </section>
 
       <section className="mt-auto border-t border-line pt-3 text-xs leading-relaxed text-muted">
