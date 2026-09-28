@@ -1,10 +1,11 @@
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { TraitValue } from "@/core/profile";
 import type { Trait } from "@/core/types";
 import { ACCUMULATED_COLOR } from "./colors";
 
 const MAX = 4;
 const TRANSITION = { duration: 0.5, ease: [0.22, 1, 0.36, 1] } as const;
+const INSTANT = { duration: 0 } as const;
 
 function rankOf(values: Record<string, TraitValue>): Map<string, number> {
   const known = Object.entries(values)
@@ -16,7 +17,8 @@ function rankOf(values: Record<string, TraitValue>): Map<string, number> {
 /**
  * The accumulated profile as a ranking of every trait in the dictionary. When the reader turns a
  * page, bars grow or shrink and rows slide to their new places; traits entering or leaving the top
- * of the list fade. Reduced motion is honoured by the MotionConfig around the page (ADR 0021).
+ * of the list fade. With reduced motion everything changes at once (ADR 0021): the MotionConfig
+ * around the page stops the sliding, but not the fading or the bar widths.
  */
 export default function TraitRanking({
   traits,
@@ -29,6 +31,7 @@ export default function TraitRanking({
   accumulated: Record<string, TraitValue>;
   limit?: number;
 }) {
+  const transition = useReducedMotion() ? INSTANT : TRANSITION;
   const now = rankOf(accumulated);
   const ranked = traits
     .filter((t) => now.has(t.id))
@@ -51,7 +54,7 @@ export default function TraitRanking({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={TRANSITION}
+              transition={transition}
               className="grid grid-cols-[1.5rem_7.5rem_1fr] items-center gap-2 text-sm"
             >
               <span className="font-latin text-right text-xs text-muted">{now.get(t.id)}</span>
@@ -62,7 +65,7 @@ export default function TraitRanking({
                   style={{ background: ACCUMULATED_COLOR, opacity: 0.7 }}
                   initial={false}
                   animate={{ width: `${(value / MAX) * 100}%` }}
-                  transition={TRANSITION}
+                  transition={transition}
                 />
               </span>
             </motion.li>

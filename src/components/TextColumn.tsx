@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import type { Part } from "@/core/parts";
 import type { Segment } from "@/core/types";
@@ -122,6 +122,7 @@ export default function TextColumn({
     return () => clearTimeout(t);
   }, [playing, index, duration, onAdvance]);
 
+  const reduceMotion = useReducedMotion();
   const face = typeface === "sans" ? "font-sans" : "font-serif";
   const nav = `flex w-16 shrink-0 flex-col items-center justify-center gap-1 text-muted hover:bg-line disabled:opacity-20 ${face}`;
   return (
@@ -133,15 +134,16 @@ export default function TextColumn({
           <span className="text-sm">次</span>
         </button>
         <div ref={box} className="flex min-w-0 flex-1 justify-center overflow-hidden py-8">
-          {/* The old part fades out before the new one fades in (ADR 0013). */}
+          {/* The old part fades out before the new one fades in (ADR 0013); with reduced motion the
+              text changes at once (ADR 0021). */}
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={index}
               className={`tategaki h-full ${face}`}
               style={{ fontSize }}
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { duration: 0.2, ease: "easeOut" } }}
-              exit={{ opacity: 0, transition: { duration: 0.12, ease: "easeIn" } }}
+              animate={{ opacity: 1, transition: { duration: reduceMotion ? 0 : 0.2, ease: "easeOut" } }}
+              exit={{ opacity: 0, transition: { duration: reduceMotion ? 0 : 0.12, ease: "easeIn" } }}
             >
               {part.chunks.map((c, i) => (
                 <p key={`${c.paragraph}-${i}`} className={c.indent ? "indent-[1em]" : ""} data-paragraph={c.paragraph}>

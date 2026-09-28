@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Reveal } from "@/core/reveal";
 import type { WorkData } from "@/core/types";
 import type { WorkSummary } from "@/lib/works";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import Avatar from "./Avatar";
 
@@ -24,6 +24,7 @@ export default function WorkColumn({
   const known = work.characters.filter((c) => c.judged && reveal[c.id].mention <= part);
   const [pointed, setPointed] = useState<string | null>(null);
   const shown = known.find((c) => c.id === pointed);
+  const reduceMotion = useReducedMotion();
   return (
     <aside className="flex min-h-0 flex-col gap-5 overflow-y-auto border-r border-line bg-panel p-5">
       <section>
@@ -80,7 +81,7 @@ export default function WorkColumn({
                   initial={{ opacity: 0, scale: 0.6 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.6 }}
-                  transition={{ type: "spring", stiffness: 380, damping: 22 }}
+                  transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 22 }}
                   className="flex cursor-default flex-col items-center rounded text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-line"
                   tabIndex={0}
                   onMouseEnter={() => setPointed(c.id)}
