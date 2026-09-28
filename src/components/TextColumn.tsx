@@ -86,20 +86,18 @@ export default function TextColumn({
     return () => ro.disconnect();
   }, [budget, maxParagraphs]);
 
+  const face = typeface === "sans" ? "font-sans" : "font-serif";
+  const nav = `flex w-12 shrink-0 flex-col items-center justify-center gap-1 text-muted hover:bg-line disabled:opacity-20 ${face}`;
   return (
     <section className="flex min-h-0 min-w-0 flex-col border-r border-line">
       <div className="flex min-h-0 flex-1 items-stretch">
         {/* Next is on the left, as in a printed book. */}
-        <button
-          onClick={onNext}
-          disabled={index === total - 1}
-          className="w-12 shrink-0 text-2xl text-muted hover:bg-line disabled:opacity-20"
-          aria-label="次へ"
-        >
-          ‹
+        <button onClick={onNext} disabled={index === total - 1} className={nav} aria-label="次へ">
+          <span className="text-2xl leading-none">‹</span>
+          <span className="text-sm">次</span>
         </button>
         <div ref={box} className="flex min-w-0 flex-1 justify-center overflow-hidden py-8">
-          <div className={`tategaki h-full ${typeface === "sans" ? "font-sans" : "font-serif"}`} style={{ fontSize }}>
+          <div className={`tategaki h-full ${face}`} style={{ fontSize }}>
             {part.chunks.map((c, i) => (
               <p key={`${c.paragraph}-${i}`} className={c.indent ? "indent-[1em]" : ""} data-paragraph={c.paragraph}>
                 {renderSegments(c.segments, `${c.paragraph}-${i}`)}
@@ -107,18 +105,13 @@ export default function TextColumn({
             ))}
           </div>
         </div>
-        <button
-          onClick={onPrev}
-          disabled={index === 0}
-          className="w-12 shrink-0 text-2xl text-muted hover:bg-line disabled:opacity-20"
-          aria-label="前へ"
-        >
-          ›
+        <button onClick={onPrev} disabled={index === 0} className={nav} aria-label="前へ">
+          <span className="text-2xl leading-none">›</span>
+          <span className="text-sm">前</span>
         </button>
       </div>
-      <div className="flex h-10 shrink-0 items-center justify-center border-t border-line text-sm text-muted">
+      <div className={`flex h-10 shrink-0 items-center justify-center text-sm tracking-widest text-muted ${face}`}>
         {index + 1} / {total}
-        <span className="ml-3 text-xs">← 次へ　前へ →</span>
       </div>
     </section>
   );
