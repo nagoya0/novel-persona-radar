@@ -55,12 +55,15 @@ Tested and worked, but outside this project's scope for now:
 
 ## Open questions
 
-- **The trait dictionary.** Which ~30 traits ([ADR 0016](adr/0016-precomputed-trait-dictionary.md));
-  whether near-synonyms and opposites should be kept out of the same random draw.
-- **Accumulation.** Where evidence is strong, many traits score near the maximum at once (the king in
-  paragraph 20: *cruel*, *malicious*, *hostile*, *haughty*, *arrogant*, *suspicious* all about 3.9).
-  Check with the full-work data whether plain weighted accumulation makes every character's chart
-  large everywhere, and whether some normalisation is needed.
+- **Random draws.** Whether near-synonyms and opposites should be kept out of the same random draw
+  of axes ([ADR 0016](adr/0016-precomputed-trait-dictionary.md)).
+- **Speakers absorbing what they describe.** In the screening run, the old man, who only reports the
+  king's cruelty, came out *suspicious*, *cruel* and *domineering* himself. The reverse of
+  *characters seen through others*: describing a trait is read as having it.
+- **Accumulation.** Where evidence is strong, many traits score near the maximum at once in a single
+  paragraph. Over the whole of *Run, Melos!*, weighted accumulation kept most values between 2 and 3
+  out of 4 ([ADR 0035](adr/0035-trait-dictionary-from-screening.md)), so no normalisation for now;
+  revisit when the charts are on screen.
 - **Characters seen through others.** In paragraph 20 the king privately calls Melos a liar while
   Melos is on stage; Jev gave Melos *deceitful* evidence 0.53 with a score of 0.8. Paragraph-level
   annotation cannot separate such opinions from direct evidence (see [ADR 0032](adr/0032-on-stage-profiles-and-two-first-appearances.md)).

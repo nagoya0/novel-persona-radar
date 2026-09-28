@@ -36,3 +36,4 @@
 | 0032 | [Profiles come from on-stage paragraphs; characters are listed from first mention](0032-on-stage-profiles-and-two-first-appearances.md) | Accepted |
 | 0033 | [Pin each work's source file in the repository](0033-pin-source-texts.md) | Accepted |
 | 0034 | [Describe each paragraph by its voices: kind and subject](0034-paragraph-voices.md) | Accepted |
+| 0035 | [Choose the trait dictionary by screening a whole work](0035-trait-dictionary-from-screening.md) | Accepted |
