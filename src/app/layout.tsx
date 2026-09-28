@@ -6,6 +6,8 @@ const sans = Noto_Sans_JP({ variable: "--font-sans-jp", weight: ["400", "500", "
 const serif = Noto_Serif_JP({ variable: "--font-serif-jp", weight: ["400", "600"], preload: false });
 
 export const metadata: Metadata = {
+  // Link previews need absolute URLs (ADR 0023); pages set them with workMetadata.
+  metadataBase: new URL("https://novel-persona-radar.vercel.app"),
   title: "Novel Persona Radar",
   description: "Read a novel and watch its characters take shape.",
 };

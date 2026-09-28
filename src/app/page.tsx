@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import WorkView from "@/components/WorkView";
-import { listWorks, loadWork } from "@/lib/works";
+import { listWorks, loadWork, workMetadata } from "@/lib/works";
 
 // No table of contents: the site opens on the first work, and works are switched in the work
 // column. A static export cannot redirect, so the root renders that work itself.
@@ -10,8 +10,7 @@ function firstWork() {
 }
 
 export function generateMetadata(): Metadata {
-  const { work } = firstWork();
-  return { title: `${work.title} — Novel Persona Radar`, description: work.summary };
+  return workMetadata(firstWork().work);
 }
 
 export default function Home() {

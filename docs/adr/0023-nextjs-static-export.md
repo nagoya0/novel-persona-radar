@@ -26,3 +26,7 @@ wanted, but using them would need its own decision about cost and rate limits.
 works are switched in the work column ([ADR 0013](0013-three-column-layout.md)). A static export
 cannot redirect, so the root page renders the first work itself; each work keeps its own URL under
 `/works/<id>`.
+
+*Amended 2026-09-29:* link previews carry each work's title and summary, and one shared image: a
+screenshot of the first page of *Run, Melos!* at 1200 × 630 (`public/og-image.png`), taken from
+the deployed site. A per-work image can come with the second work.
