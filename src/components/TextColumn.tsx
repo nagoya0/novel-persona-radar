@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import type { Part } from "@/core/parts";
 import type { Segment } from "@/core/types";
+import PageBar from "./PageBar";
 import type { Typeface } from "./WorkView";
 
 /** Set runs of one or two digits upright in vertical text (ADR 0014). */
@@ -113,26 +114,8 @@ export default function TextColumn({
           <span className="text-sm">前</span>
         </button>
       </div>
-      {/*
-        The page count sits over the bottom margin, so top and bottom margins stay equal. Hovering
-        near the bottom edge brings up a slider above it for jumping to any page. The slider runs
-        right to left, like the vertical text.
-      */}
-      <div className="group absolute inset-x-12 bottom-0 flex h-20 flex-col items-center justify-end">
-        <input
-          type="range"
-          min={0}
-          max={total - 1}
-          value={index}
-          onChange={(e) => onJump(Number(e.target.value))}
-          aria-label="ページ"
-          dir="rtl"
-          className="mb-1 w-1/2 cursor-pointer accent-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100 focus-visible:opacity-100"
-        />
-        <div className={`pointer-events-none flex h-8 items-center text-sm tracking-widest text-muted ${face}`}>
-          {index + 1} / {total}
-        </div>
-      </div>
+      {/* Over the bottom margin, so top and bottom margins stay equal. */}
+      <PageBar index={index} total={total} face={face} onJump={onJump} />
     </section>
   );
 }
