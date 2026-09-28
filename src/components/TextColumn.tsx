@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import type { Part } from "@/core/parts";
 import type { Segment } from "@/core/types";
+import AutoplayButton from "./AutoplayButton";
 import PageBar from "./PageBar";
 import type { Typeface } from "./WorkView";
 
@@ -52,6 +53,18 @@ export function fitFontSize(width: number, height: number, chars: number, paragr
   return Math.max(MIN_FONT, Math.min(MAX_FONT, Math.floor(fs)));
 }
 
+/** Seconds of autoplay per line of text on the page (ADR 0018). */
+const SECONDS_PER_LINE = 3;
+
+/**
+ * About how many vertical lines a part takes: each paragraph starts a new line, and a line holds
+ * as many characters as fit the text height (letter spacing is 0.05em, see globals.css).
+ */
+function countLines(part: Part, fontSize: number, height: number): number {
+  const perLine = Math.max(1, Math.floor(height / (fontSize * 1.05)));
+  return part.chunks.reduce((n, c) => n + Math.ceil((c.length + (c.indent ? 1 : 0)) / perLine), 0);
+}
+
 export default function TextColumn({
   part,
   index,
@@ -62,6 +75,9 @@ export default function TextColumn({
   onPrev,
   onJump,
   typeface,
+  playing,
+  onTogglePlay,
+  onAdvance,
 }: {
   part: Part;
   index: number;
@@ -76,23 +92,38 @@ export default function TextColumn({
   onJump: (part: number) => void;
   /** Mincho or Gothic; both are full-width, so the fitted size still holds. */
   typeface: Typeface;
+  playing: boolean;
+  onTogglePlay: () => void;
+  /** Turn to the next page during autoplay (without stopping it). */
+  onAdvance: () => void;
 }) {
   // One font size for the whole work, sized so that the fullest part fits this screen.
   const box = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState(18);
+  const [textHeight, setTextHeight] = useState(600);
   useEffect(() => {
     const el = box.current;
     if (!el) return;
-    const fit = () =>
+    const fit = () => {
       setFontSize(fitFontSize(el.clientWidth - PADDING_X, el.clientHeight - PADDING_Y, budget, maxParagraphs));
+      setTextHeight(el.clientHeight - PADDING_Y);
+    };
     fit();
     const ro = new ResizeObserver(fit);
     ro.observe(el);
     return () => ro.disconnect();
   }, [budget, maxParagraphs]);
 
+  // Autoplay waits in proportion to how much text the page holds.
+  const duration = countLines(part, fontSize, textHeight) * SECONDS_PER_LINE * 1000;
+  useEffect(() => {
+    if (!playing) return;
+    const t = setTimeout(onAdvance, duration);
+    return () => clearTimeout(t);
+  }, [playing, index, duration, onAdvance]);
+
   const face = typeface === "sans" ? "font-sans" : "font-serif";
-  const nav = `flex w-12 shrink-0 flex-col items-center justify-center gap-1 text-muted hover:bg-line disabled:opacity-20 ${face}`;
+  const nav = `flex w-16 shrink-0 flex-col items-center justify-center gap-1 text-muted hover:bg-line disabled:opacity-20 ${face}`;
   return (
     <section className="relative flex min-h-0 min-w-0 flex-col border-r border-line">
       <div className="flex min-h-0 flex-1 items-stretch">
@@ -124,6 +155,10 @@ export default function TextColumn({
           <span className="text-2xl leading-none">›</span>
           <span className="text-sm">前</span>
         </button>
+      </div>
+      {/* The column's bottom-left corner, over the side button and the page bar (ADR 0041). */}
+      <div className="absolute bottom-3 left-3 z-10">
+        <AutoplayButton playing={playing} page={index} duration={duration} onToggle={onTogglePlay} />
       </div>
       {/* Over the bottom margin, so top and bottom margins stay equal. */}
       <PageBar index={index} total={total} face={face} onJump={onJump} />

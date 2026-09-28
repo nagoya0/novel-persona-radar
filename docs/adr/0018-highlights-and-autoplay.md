@@ -15,8 +15,8 @@ Judge every paragraph of every work, and offer two ways to see the result withou
 
 - **Highlights.** A few marked scenes per work to jump to. The chart at a highlight includes
   everything accumulated up to that point.
-- **Autoplay.** A play button that advances through the parts automatically, so the chart grows
-  from the first page to the last in about half a minute.
+- **Autoplay.** A play button that advances through the parts automatically
+  ([ADR 0041](0041-autoplay-button.md)).
 
 Highlights are chosen by hand in the work's annotation file
 ([ADR 0019](0019-work-annotation-files.md)). Detecting them from the data — the parts where the
@@ -24,5 +24,4 @@ charts move most — is a possible later addition.
 
 ## Consequences
 
-A visitor's first experience is pressing play or clicking a highlight; reading page by page is for
-those who want to. Autoplay also produces the demo video ([ADR 0012](0012-desktop-browser-first.md)).
+Autoplay can also produce the demo video ([ADR 0012](0012-desktop-browser-first.md)).

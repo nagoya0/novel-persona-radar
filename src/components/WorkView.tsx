@@ -54,6 +54,25 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
 
   const go = useCallback((i: number) => setPart(Math.max(0, Math.min(parts.length - 1, i))), [parts.length]);
 
+  // Autoplay (ADR 0018). Turning pages by hand stops it; it stops by itself after the last page.
+  const [playing, setPlaying] = useState(false);
+  const turn = useCallback(
+    (i: number) => {
+      setPlaying(false);
+      go(i);
+    },
+    [go],
+  );
+  const advance = useCallback(() => {
+    if (part >= parts.length - 1) setPlaying(false);
+    else go(part + 1);
+  }, [go, part, parts.length]);
+  const togglePlay = () => {
+    // Playing from the last page starts over from the first.
+    if (!playing && part === parts.length - 1) go(0);
+    setPlaying(!playing);
+  };
+
   // Deep links: ?part=12&character=king opens a given place (parts are 1-based in the URL).
   useEffect(() => {
     const q = new URLSearchParams(window.location.search);
@@ -71,12 +90,12 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
       // Leave arrow keys to the page slider and the axis dropdowns while they have focus.
       const target = e.target as HTMLElement | null;
       if (target?.closest("input, select, textarea")) return;
-      if (e.key === "ArrowLeft") go(part + 1);
-      if (e.key === "ArrowRight") go(part - 1);
+      if (e.key === "ArrowLeft") turn(part + 1);
+      if (e.key === "ArrowRight") turn(part - 1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [go, part]);
+  }, [turn, part]);
 
   const fullest = useMemo(
     () => ({
@@ -126,7 +145,7 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
             works={works}
             part={part}
             reveal={reveal}
-            onJump={(paragraph) => go(partOfParagraph(parts, paragraph))}
+            onJump={(paragraph) => turn(partOfParagraph(parts, paragraph))}
           />
           <TextColumn
             part={parts[part]}
@@ -134,10 +153,13 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
             total={parts.length}
             budget={fullest.chars}
             maxParagraphs={fullest.paragraphs}
-            onNext={() => go(part + 1)}
-            onPrev={() => go(part - 1)}
-            onJump={go}
+            onNext={() => turn(part + 1)}
+            onPrev={() => turn(part - 1)}
+            onJump={turn}
             typeface={typeface}
+            playing={playing}
+            onTogglePlay={togglePlay}
+            onAdvance={advance}
           />
           <AnalysisColumn
             work={work}

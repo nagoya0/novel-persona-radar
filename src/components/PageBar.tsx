@@ -48,7 +48,7 @@ export default function PageBar({
       onPointerMove={move}
       onPointerUp={up}
       onPointerCancel={up}
-      className="group absolute inset-x-12 bottom-0 h-8 cursor-pointer select-none"
+      className="group absolute inset-x-16 bottom-0 h-8 cursor-pointer select-none"
     >
       <div className="absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
         <div className="absolute inset-0 bg-line" />

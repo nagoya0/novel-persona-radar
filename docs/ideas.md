@@ -6,11 +6,11 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 
 Decided but not built yet, roughly in order:
 
-1. **Autoplay** ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
-2. **README with a demo video**, doubling as the narrow-screen fallback
+1. **README with a demo video**, doubling as the narrow-screen fallback
    ([ADR 0012](adr/0012-desktop-browser-first.md)); mention the page bar and deep links.
-3. **Deploy to Vercel** ([ADR 0029](adr/0029-host-on-vercel.md)).
-4. **Licence and a fresh pre-release audit** before making the repository public.
+2. **Deploy to Vercel** ([ADR 0029](adr/0029-host-on-vercel.md)).
+3. **Licence and a fresh pre-release audit** before making the repository public. The audit
+   includes the ADRs: check that each records what was actually agreed, not an assumption.
 
 ## Features
 
