@@ -42,7 +42,7 @@ export default function WorkColumn({
 
       <section>
         <label htmlFor="highlight" className="text-xs text-muted">
-          見どころ
+          場面
         </label>
         <select
           id="highlight"
@@ -50,7 +50,7 @@ export default function WorkColumn({
           onChange={(e) => e.target.value !== "" && onJump(Number(e.target.value))}
           className="mt-1 w-full rounded border border-line bg-panel px-2 py-1 text-sm"
         >
-          <option value="">場面を選んで移動…</option>
+          <option value="">選んで移動…</option>
           {work.highlights.map((h) => (
             <option key={h.paragraph} value={h.paragraph}>
               {h.title}
