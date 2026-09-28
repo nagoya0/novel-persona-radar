@@ -7,6 +7,15 @@ Guidance for AI coding agents working in this repository.
 A reader for public-domain Japanese novels (Aozora Bunko) that draws each character's
 personality as a radar chart, updated paragraph by paragraph. See [README.md](README.md).
 
+## Next.js
+
+This project uses a recent Next.js whose APIs may differ from what you know. Follow the rules in
+@AGENTS.md and read the bundled docs in `node_modules/next/dist/docs/` before writing Next.js code.
+
+- `pnpm dev` / `pnpm build` first run `scripts/build-data.ts`, which compiles `data/` into
+  `src/generated/` (git-ignored). Run `pnpm data` on its own after changing data.
+- `src/core/` is pure TypeScript with no React or Node dependencies.
+
 ## Language
 
 Everything in the repository is in English: documentation, code, comments, commit messages.
