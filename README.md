@@ -19,8 +19,8 @@ story never tells us.
    - *If so, how much does the trait fit?* — a score on a fixed scale
 3. **Code** accumulates those answers, weighted by the evidence probability, with older
    paragraphs slowly fading so that characters can change over the course of the story.
-4. The chart shows two layers: a thin line for the impression from the current paragraph,
-   and a thick line for everything read so far.
+4. A radar shows the impression the current page gives, and a ranking of all traits shows the
+   profile built up so far; bars and ranks shift as the reader turns pages.
 
 Jev returns decisions, not prose, so it can be asked dozens of questions per paragraph for a
 fraction of a cent. The accumulation, weighting and drawing are ordinary code — the model is
