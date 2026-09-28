@@ -2,6 +2,20 @@
 
 Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is removed from here.
 
+## Open work
+
+Decided but not built yet, roughly in order:
+
+1. **TypeScript judging pipeline** ([ADR 0026](adr/0026-node-pipeline-and-jev-client.md)): import,
+   judge, compile. Re-judge *Run, Melos!* with the 30-trait dictionary to replace
+   `judgments.screening.jsonl`, which came from a throwaway screening script. The request format
+   to reproduce is in [judging.md](judging.md).
+2. **Autoplay** ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
+3. **README with a demo video**, doubling as the narrow-screen fallback
+   ([ADR 0012](adr/0012-desktop-browser-first.md)); mention the page bar and deep links.
+4. **Deploy to Vercel** ([ADR 0029](adr/0029-host-on-vercel.md)).
+5. **Licence and a fresh pre-release audit** before making the repository public.
+
 ## Features
 
 - **Jump to the evidence.** Clicking a spike in the chart jumps to the paragraph that caused it
@@ -35,6 +49,8 @@ analysis column ([ADR 0038](adr/0038-current-radar-and-trait-ranking.md)), chara
   ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
 - **Remaining animation.** The radar morphing between parts, and the text fading between parts
   ([ADR 0013](adr/0013-three-column-layout.md)).
+- **Deep links without the flash.** Read `?part=` before the first render instead of jumping after
+  mount ([ADR 0039](adr/0039-reading-controls.md)).
 
 ## Translation choices ([ADR 0011](adr/0011-translation-decisions.md))
 

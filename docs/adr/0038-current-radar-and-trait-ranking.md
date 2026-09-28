@@ -24,6 +24,13 @@ the geometry.
   to their new ranks; traits entering or leaving the top ten fade (Motion, with reduced motion
   honoured, [ADR 0021](0021-keyboard-and-reduced-motion.md)).
 - **The timeline is dropped.**
+- **Framing.** The column is titled *Jev が抱いた印象*; a *仕組み* section at the bottom explains
+  in four points how the judgments are made and that they are computed in advance.
+- **Evidence thresholds.** A trait shows on the radar with 0.4 evidence in the part, and in the
+  ranking with 0.8 accumulated: a part holds only a few paragraphs.
+- **What counts where.** A paragraph adds to the accumulated profile once, in the part where it
+  starts; the current part's radar uses every paragraph shown in it, including the continuation
+  of a split one ([ADR 0015](0015-judge-paragraphs-show-parts.md)).
 
 ## Consequences
 

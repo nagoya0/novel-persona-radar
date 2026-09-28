@@ -40,3 +40,5 @@
 | 0036 | [Fit the text size to the screen; design for 1920 × 1080](0036-fit-text-size-to-the-screen.md) | Accepted |
 | 0037 | [Six axes, chosen on the radar itself](0037-six-axes-chosen-on-the-radar.md) | Accepted |
 | 0038 | [A radar for the current part, a ranking for the story so far](0038-current-radar-and-trait-ranking.md) | Accepted |
+| 0039 | [Reading controls: side buttons, a page bar, a typeface switch and deep links](0039-reading-controls.md) | Accepted |
+| 0040 | [The work column: a scene picker and an avatar grid](0040-work-column.md) | Accepted |
