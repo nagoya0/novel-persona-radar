@@ -51,18 +51,18 @@ export default function PageBar({
       className="group absolute inset-x-12 bottom-0 h-8 cursor-pointer select-none"
     >
       <div className="absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-        <div className="absolute inset-0 bg-line/50" />
+        <div className="absolute inset-0 bg-line" />
         {/* Filled from the right edge up to the current page. */}
-        <div className="absolute inset-y-0 right-0 bg-foreground/15" style={{ width: `${filled}%` }} />
+        <div className="absolute inset-y-0 right-0 bg-[#c9bfae]" style={{ width: `${filled}%` }} />
         {Array.from({ length: total - 1 }, (_, i) => (
           <div
             key={i}
-            className="absolute inset-y-2 w-px bg-foreground/15"
+            className="absolute inset-y-2 w-px bg-[#b3a894]"
             style={{ right: `${((i + 1) / total) * 100}%` }}
           />
         ))}
       </div>
-      <div className={`pointer-events-none relative flex h-full items-center justify-center text-sm tracking-widest text-muted ${face}`}>
+      <div className={`pointer-events-none relative flex h-full items-center justify-center text-sm tracking-widest text-muted group-hover:text-foreground ${face}`}>
         {index + 1} / {total}
       </div>
     </div>
