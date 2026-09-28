@@ -99,7 +99,6 @@ for (const id of readdirSync(WORKS)) {
     highlights: ann.highlights,
     traits: dictionary.traits,
     judgments: readJudgments(path.join(dir, "judgments.screening.jsonl"), traitIds),
-    judgmentsNote: "Provisional judgments from the trait screening run (ADR 0035).",
   };
   writeFileSync(path.join(OUT, `${id}.json`), JSON.stringify(data));
   index.push({ id, title: ann.title, author: ann.author });

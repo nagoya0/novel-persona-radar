@@ -84,7 +84,6 @@ export default function WorkColumn({
         {work.credits.map((c) => (
           <p key={c}>{c}</p>
         ))}
-        <p className="mt-2">{work.judgmentsNote}</p>
       </section>
     </aside>
   );

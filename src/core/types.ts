@@ -51,6 +51,4 @@ export interface WorkData {
   highlights: Highlight[];
   traits: Trait[];
   judgments: Judgments;
-  /** Where the judgments came from, shown while the data is provisional. */
-  judgmentsNote: string;
 }
