@@ -14,3 +14,9 @@ Draw two layers: a thin line for the impression from the current paragraph, and 
 ## Consequences
 
 The viewer sees both how a scene reads and how it changes the overall picture.
+
+*Amended 2026-09-28:* both layers are filled rather than drawn as a thick and a dotted line, which
+were hard to tell apart. The accumulated profile is painted in a muted grey underneath and the
+current part in a strong colour on top, since how a scene departs from the running profile is the
+point. The current part needs less evidence before a trait is shown (0.4 instead of 0.8): a part
+holds only a few paragraphs.

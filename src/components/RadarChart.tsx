@@ -2,7 +2,7 @@ import { scaleLinear } from "d3-scale";
 import { curveLinearClosed, lineRadial } from "d3-shape";
 import type { TraitValue } from "@/core/profile";
 import type { Trait } from "@/core/types";
-import { AXIS_COLORS } from "./colors";
+import { ACCUMULATED_COLOR, AXIS_COLORS, CURRENT_COLOR } from "./colors";
 
 const SIZE = 360;
 const R = 108;
@@ -88,8 +88,11 @@ export default function RadarChart({
         })}
         {!emptyMessage && (
           <>
-            <path d={shape(values(accumulated)) ?? ""} fill="#2b2722" fillOpacity={0.08} stroke="#2b2722" strokeWidth={2.5} />
-            <path d={shape(values(current)) ?? ""} fill="none" stroke="#2b2722" strokeWidth={1} strokeDasharray="3 3" />
+            {/* The accumulated profile underneath, this part painted over it (ADR 0005). */}
+            <path d={shape(values(accumulated)) ?? ""} fill={ACCUMULATED_COLOR} fillOpacity={0.22} stroke={ACCUMULATED_COLOR} strokeWidth={1.5} />
+            {axes.some((a) => current[a]?.value != null) && (
+              <path d={shape(values(current)) ?? ""} fill={CURRENT_COLOR} fillOpacity={0.3} stroke={CURRENT_COLOR} strokeWidth={2} strokeLinejoin="round" />
+            )}
             {axes.map((a, i) => {
               const v = accumulated[a]?.value;
               if (v === null || v === undefined) return null;

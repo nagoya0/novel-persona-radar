@@ -18,11 +18,16 @@ export interface PartProfile {
 export interface ProfileOptions {
   /** Weight kept by earlier evidence each time the character appears on stage (ADR 0004). */
   decay: number;
-  /** Below this much evidence a value is unknown. */
+  /** Below this much accumulated evidence a value is unknown. */
   unknownBelow: number;
+  /**
+   * The same threshold for a single part. A part holds only a few paragraphs, and the current
+   * impression is meant to show what a scene suggests, so it takes less evidence.
+   */
+  unknownBelowCurrent: number;
 }
 
-export const DEFAULT_PROFILE_OPTIONS: ProfileOptions = { decay: 0.85, unknownBelow: 0.8 };
+export const DEFAULT_PROFILE_OPTIONS: ProfileOptions = { decay: 0.85, unknownBelow: 0.8, unknownBelowCurrent: 0.4 };
 
 /**
  * Build a character's profile part by part (ADR 0002, 0003, 0004). Only paragraphs where the
@@ -57,15 +62,12 @@ export function buildProfile(
       }
     }
 
-    const value = (n: number, d: number): TraitValue => ({
-      value: d >= options.unknownBelow ? n / d : null,
-      evidence: d,
-    });
+    const value = (n: number, d: number, min: number): TraitValue => ({ value: d >= min ? n / d : null, evidence: d });
     const current: Record<string, TraitValue> = {};
     const accumulated: Record<string, TraitValue> = {};
     for (const t of traitIds) {
-      current[t] = value(curNum[t], curDen[t]);
-      accumulated[t] = value(num[t], den[t]);
+      current[t] = value(curNum[t], curDen[t], options.unknownBelowCurrent);
+      accumulated[t] = value(num[t], den[t], options.unknownBelow);
     }
     return { current, accumulated };
   });

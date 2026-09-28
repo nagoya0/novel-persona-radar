@@ -83,9 +83,12 @@ export default function TimelineChart({
             />,
           );
         }
+        // A dot at the current position, so a trait shows even before it has a segment to draw.
+        const now = profile[part].accumulated[a]?.value;
         return (
           <g key={a} opacity={dim ? 0.15 : 1} onMouseEnter={() => onHover(a)} onMouseLeave={() => onHover(null)}>
             {segs}
+            {now != null && <circle cx={x(part)} cy={y(now)} r={hovered === a ? 4 : 3} fill={AXIS_COLORS[i]} />}
             <title>{label(a)}</title>
           </g>
         );

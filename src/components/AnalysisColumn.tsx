@@ -1,6 +1,7 @@
 import type { Part } from "@/core/parts";
 import type { PartProfile } from "@/core/profile";
 import type { WorkData } from "@/core/types";
+import { ACCUMULATED_COLOR, CURRENT_COLOR } from "./colors";
 import RadarChart from "./RadarChart";
 import TimelineChart from "./TimelineChart";
 import type { LabelStyle } from "./WorkView";
@@ -92,8 +93,14 @@ export default function AnalysisColumn({
           onRandom={random}
         />
         <div className="flex justify-center gap-4 text-[11px] text-muted">
-          <span>━ ここまでの人物像</span>
-          <span>┄ このパートの印象</span>
+          <span className="flex items-center gap-1">
+            <i className="inline-block h-2.5 w-2.5 rounded-sm" style={{ background: ACCUMULATED_COLOR, opacity: 0.5 }} />
+            ここまでの人物像
+          </span>
+          <span className="flex items-center gap-1">
+            <i className="inline-block h-2.5 w-2.5 rounded-sm" style={{ background: CURRENT_COLOR, opacity: 0.6 }} />
+            このパートの印象
+          </span>
         </div>
       </section>
 
@@ -125,7 +132,7 @@ export default function AnalysisColumn({
             」に渡し、場面にいる人物ごとに、30の性格について「手がかりがあるか」と「どれくらい当てはまるか」を判定させています。
           </li>
           <li>
-            判定を手がかりの強さで重み付けして積み上げ、古い場面ほど少しずつ薄れるようにしています。太い線が積み上げた人物像、点線がこのパートだけの印象です。
+            判定を手がかりの強さで重み付けして積み上げ、古い場面ほど少しずつ薄れるようにしています。灰色が積み上げた人物像、その上に重ねた朱色がこのパートだけの印象です。
           </li>
           <li>登場人物の呼び名や、誰が話しているかといった注釈は、AI（Claude）が下書きし、人が確認しています。</li>
           <li>判定は事前に済ませてあり、このページを見るたびに AI を呼んでいるわけではありません。</li>
