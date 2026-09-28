@@ -4,9 +4,9 @@ const REPOSITORY = "https://github.com/nagoya0/novel-persona-radar";
  * Authorship of the app, with a GitHub icon linking to the repository. The novels' own credits are
  * shown separately, with each work.
  */
-export default function Copyright({ className = "" }: { className?: string }) {
+export default function Copyright() {
   return (
-    <span className={`font-latin flex items-center gap-2 text-xs text-muted ${className}`}>
+    <span className="font-latin flex items-center gap-2 text-xs text-muted">
       © nagoya0
       <a
         href={REPOSITORY}

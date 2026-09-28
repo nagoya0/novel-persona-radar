@@ -21,3 +21,8 @@ time from the work's data files, with per-work metadata for link previews. Use n
 
 The site deploys as plain files. Route handlers remain available should a live mode ever be
 wanted, but using them would need its own decision about cost and rate limits.
+
+*Amended 2026-09-29:* there is no table-of-contents page. The site opens on the first work, and
+works are switched in the work column ([ADR 0013](0013-three-column-layout.md)). A static export
+cannot redirect, so the root page renders the first work itself; each work keeps its own URL under
+`/works/<id>`.
