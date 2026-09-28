@@ -44,6 +44,13 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
     return () => window.removeEventListener("keydown", onKey);
   }, [go, part]);
 
+  const fullest = useMemo(
+    () => ({
+      chars: Math.max(...parts.map((p) => p.chunks.reduce((n, c) => n + c.length, 0))),
+      paragraphs: Math.max(...parts.map((p) => p.chunks.length)),
+    }),
+    [parts],
+  );
   const position = parts[part].lastParagraph;
   const traitIds = work.traits.map((t) => t.id);
   const profile = useMemo(
@@ -75,14 +82,22 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
             ))}
           </div>
         </header>
-        <main className="grid min-h-0 flex-1 grid-cols-[280px_minmax(0,1fr)_460px]">
+        <main className="grid min-h-0 flex-1 grid-cols-[clamp(240px,16vw,320px)_minmax(0,1fr)_clamp(420px,27vw,520px)]">
           <WorkColumn
             work={work}
             works={works}
             position={position}
             onJump={(paragraph) => go(partOfParagraph(parts, paragraph))}
           />
-          <TextColumn part={parts[part]} index={part} total={parts.length} onNext={() => go(part + 1)} onPrev={() => go(part - 1)} />
+          <TextColumn
+            part={parts[part]}
+            index={part}
+            total={parts.length}
+            budget={fullest.chars}
+            maxParagraphs={fullest.paragraphs}
+            onNext={() => go(part + 1)}
+            onPrev={() => go(part - 1)}
+          />
           <AnalysisColumn
             work={work}
             parts={parts}
