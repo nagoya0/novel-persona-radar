@@ -1,5 +1,7 @@
 import { scaleLinear } from "d3-scale";
 import { curveLinearClosed, lineRadial } from "d3-shape";
+import { animate, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import type { TraitValue } from "@/core/profile";
 import type { Trait } from "@/core/types";
 import { AXIS_COLORS, CURRENT_COLOR } from "./colors";
@@ -8,6 +10,36 @@ const SIZE = 360;
 const R = 108;
 const LABEL_R = R + 34;
 const MAX = 4;
+
+/**
+ * Tween each axis from its drawn value to its new one, so the shape morphs when the page, the
+ * character or an axis changes (ADR 0013). Jumps straight there when reduced motion is set.
+ */
+function useMorph(target: number[]): number[] {
+  const reduce = useReducedMotion();
+  const [drawn, setDrawn] = useState(target);
+  const latest = useRef(drawn);
+  const key = target.join(",");
+  useEffect(() => {
+    const from = latest.current;
+    const to = key.split(",").map(Number);
+    const set = (v: number[]) => {
+      latest.current = v;
+      setDrawn(v);
+    };
+    if (reduce || from.length !== to.length) {
+      set(to);
+      return;
+    }
+    const controls = animate(0, 1, {
+      duration: 0.45,
+      ease: [0.25, 0.1, 0.25, 1],
+      onUpdate: (t) => set(to.map((v, i) => from[i] + (v - from[i]) * t)),
+    });
+    return () => controls.stop();
+  }, [key, reduce]);
+  return drawn;
+}
 
 /**
  * The impression of the current part as a radar. Each axis label is a dropdown over the trait
@@ -34,8 +66,15 @@ export default function RadarChart({
     .angle((_, i) => angle(i))
     .radius((v) => r(v))
     .curve(curveLinearClosed);
-  const point = (i: number, radius: number) => [Math.sin(angle(i)) * radius, -Math.cos(angle(i)) * radius];
+  // Rounded so the server's and the browser's Math.sin agree to the last digit when hydrating.
+  const round = (v: number) => Math.round(v * 100) / 100;
+  const point = (i: number, radius: number) => [
+    round(Math.sin(angle(i)) * radius),
+    round(-Math.cos(angle(i)) * radius),
+  ];
   const known = (a: string) => current[a]?.value != null;
+  // Axes without evidence sit at the centre, so the shape shrinks into them rather than jumping.
+  const drawn = useMorph(axes.map((a) => current[a]?.value ?? 0));
 
   return (
     <div className="relative mx-auto" style={{ width: SIZE, height: SIZE }}>
@@ -69,9 +108,9 @@ export default function RadarChart({
             </g>
           );
         })}
-        {axes.some(known) && (
+        {drawn.some((v) => v > 0) && (
           <path
-            d={shape(axes.map((a) => current[a]?.value ?? 0)) ?? ""}
+            d={shape(drawn) ?? ""}
             fill={CURRENT_COLOR}
             fillOpacity={0.3}
             stroke={CURRENT_COLOR}
@@ -81,7 +120,7 @@ export default function RadarChart({
         )}
         {axes.map((a, i) => {
           if (!known(a)) return null;
-          const [x, y] = point(i, r(current[a].value!));
+          const [x, y] = point(i, r(drawn[i]));
           return <circle key={a} cx={x} cy={y} r={3.5} fill={AXIS_COLORS[i]} />;
         })}
       </svg>

@@ -6,13 +6,11 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 
 Decided but not built yet, roughly in order:
 
-1. **Remaining animation.** The radar morphing between parts, and the text fading between parts
-   ([ADR 0013](adr/0013-three-column-layout.md)).
-2. **Autoplay** ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
-3. **README with a demo video**, doubling as the narrow-screen fallback
+1. **Autoplay** ([ADR 0018](adr/0018-highlights-and-autoplay.md)).
+2. **README with a demo video**, doubling as the narrow-screen fallback
    ([ADR 0012](adr/0012-desktop-browser-first.md)); mention the page bar and deep links.
-4. **Deploy to Vercel** ([ADR 0029](adr/0029-host-on-vercel.md)).
-5. **Licence and a fresh pre-release audit** before making the repository public.
+3. **Deploy to Vercel** ([ADR 0029](adr/0029-host-on-vercel.md)).
+4. **Licence and a fresh pre-release audit** before making the repository public.
 
 ## Features
 
