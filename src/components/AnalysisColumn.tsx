@@ -5,11 +5,6 @@ import RadarChart from "./RadarChart";
 import TimelineChart from "./TimelineChart";
 import type { LabelStyle } from "./WorkView";
 
-
-import { AXIS_COLORS } from "./colors";
-const MIN_AXES = 3;
-const MAX_AXES = 8;
-
 export default function AnalysisColumn({
   work,
   parts,
@@ -45,22 +40,29 @@ export default function AnalysisColumn({
   const current = work.characters.find((c) => c.id === character)!;
   const onStageYet = current.firstOnStage <= position;
 
-  const toggle = (id: string) => {
-    if (axes.includes(id)) {
-      if (axes.length > MIN_AXES) onAxes(axes.filter((a) => a !== id));
-    } else if (axes.length < MAX_AXES) {
-      onAxes([...axes, id]);
-    }
+  // Choosing a trait already on another axis swaps the two, so no trait appears twice.
+  const changeAxis = (index: number, trait: string) => {
+    const next = [...axes];
+    const other = next.indexOf(trait);
+    if (other !== -1) next[other] = next[index];
+    next[index] = trait;
+    onAxes(next);
   };
-  const draw = () => {
-    const ids = work.traits.map((t) => t.id).sort(() => Math.random() - 0.5);
+  const random = () => {
+    const ids = work.traits.map((t) => t.id);
+    for (let i = ids.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [ids[i], ids[j]] = [ids[j], ids[i]];
+    }
     onAxes(ids.slice(0, axes.length));
   };
 
   return (
     <aside className="flex min-h-0 flex-col gap-4 overflow-y-auto bg-panel p-5">
+      <h2 className="text-lg font-bold">Jev が抱いた印象</h2>
+
       <section>
-        <h2 className="text-xs text-muted">人物</h2>
+        <h3 className="text-xs text-muted">人物</h3>
         <div className="mt-1 flex flex-wrap gap-1">
           {selectable.map((c) => (
             <button
@@ -77,20 +79,18 @@ export default function AnalysisColumn({
       </section>
 
       <section className="rounded border border-line bg-background/40 p-2">
-        {onStageYet ? (
-          <RadarChart
-            axes={axes}
-            label={label}
-            current={profile[part].current}
-            accumulated={profile[part].accumulated}
-            hovered={hovered}
-            onHover={onHover}
-          />
-        ) : (
-          <div className="flex h-[340px] items-center justify-center text-sm text-muted">
-            {current.name}はまだ登場していません
-          </div>
-        )}
+        <RadarChart
+          axes={axes}
+          traits={work.traits}
+          label={label}
+          current={profile[part].current}
+          accumulated={profile[part].accumulated}
+          emptyMessage={onStageYet ? null : `${current.name}はまだ登場していません`}
+          hovered={hovered}
+          onHover={onHover}
+          onAxisChange={changeAxis}
+          onRandom={random}
+        />
         <div className="flex justify-center gap-4 text-[11px] text-muted">
           <span>━ ここまでの人物像</span>
           <span>┄ このパートの印象</span>
@@ -113,34 +113,22 @@ export default function AnalysisColumn({
         />
       </section>
 
-      <section>
-        <div className="flex items-center justify-between">
-          <h2 className="text-xs text-muted">
-            分析の軸（{axes.length}／{MIN_AXES}〜{MAX_AXES}）
-          </h2>
-          <button onClick={draw} className="rounded border border-line px-2 py-0.5 text-xs hover:border-foreground">
-            ランダムに引き直す
-          </button>
-        </div>
-        <div className="mt-2 flex flex-wrap gap-1">
-          {work.traits.map((t) => {
-            const i = axes.indexOf(t.id);
-            return (
-              <button
-                key={t.id}
-                onClick={() => toggle(t.id)}
-                className="rounded border px-2 py-0.5 text-xs"
-                style={
-                  i >= 0
-                    ? { borderColor: AXIS_COLORS[i], color: AXIS_COLORS[i], fontWeight: 600 }
-                    : { borderColor: "var(--line)", color: "var(--muted)" }
-                }
-              >
-                {t.ja[labelStyle]}
-              </button>
-            );
-          })}
-        </div>
+      <section className="mt-auto border-t border-line pt-3 text-xs leading-relaxed text-muted">
+        <h3 className="mb-1 font-medium text-foreground">仕組み</h3>
+        <ol className="list-decimal space-y-1 pl-4">
+          <li>
+            本文を段落ごとに判定 AI「
+            <a href="https://typesafe.ai" target="_blank" rel="noreferrer" className="underline underline-offset-2">
+              Jev
+            </a>
+            」に渡し、場面にいる人物ごとに、30の性格について「手がかりがあるか」と「どれくらい当てはまるか」を判定させています。
+          </li>
+          <li>
+            判定を手がかりの強さで重み付けして積み上げ、古い場面ほど少しずつ薄れるようにしています。太い線が積み上げた人物像、点線がこのパートだけの印象です。
+          </li>
+          <li>登場人物の呼び名や、誰が話しているかといった注釈は、AI（Claude）が下書きし、人が確認しています。</li>
+          <li>判定は事前に済ませてあり、このページを見るたびに AI を呼んでいるわけではありません。</li>
+        </ol>
       </section>
     </aside>
   );

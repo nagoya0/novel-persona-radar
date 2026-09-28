@@ -38,3 +38,4 @@
 | 0034 | [Describe each paragraph by its voices: kind and subject](0034-paragraph-voices.md) | Accepted |
 | 0035 | [Choose the trait dictionary by screening a whole work](0035-trait-dictionary-from-screening.md) | Accepted |
 | 0036 | [Fit the text size to the screen; design for 1920 × 1080](0036-fit-text-size-to-the-screen.md) | Accepted |
+| 0037 | [Six axes, chosen on the radar itself](0037-six-axes-chosen-on-the-radar.md) | Accepted |
