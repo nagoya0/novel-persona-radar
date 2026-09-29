@@ -14,7 +14,7 @@ asked 60 questions per character on stage, and the whole story came to about US$
 
 Try the **[demo page](https://novel-persona-radar.vercel.app/)** on a desktop browser.
 
-<a href="public/og-image.png"><img src="public/og-image.png" alt="The first page of Run, Melos!: the work column, the vertical text, and Melos's radar and ranking" width="600"></a>
+https://github.com/user-attachments/assets/0d050ce5-b95f-4d7f-b23e-58cf29e7b887
 
 ## What you see
 
