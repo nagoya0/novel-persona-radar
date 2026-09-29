@@ -8,8 +8,8 @@
 The point of the demo is seeing the text and the character charts side by side, changing
 together as the reader moves through the story. On a tall, narrow phone screen there is no room
 for that. Fitting it anyway would turn the page into a plain novel reader with a chart somewhere
-below it, which loses what the demo is for. Making every panel responsive would also cost a large
-share of the effort for a view that cannot show the idea.
+below it, where the text and the charts can no longer be seen changing together. Making every panel
+responsive would also cost a large share of the effort for a view that cannot show them together.
 
 Some visitors will still open the link on a phone.
 

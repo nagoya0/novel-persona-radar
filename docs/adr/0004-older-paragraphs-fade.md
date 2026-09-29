@@ -13,4 +13,4 @@ Weight evidence toward recent paragraphs with an adjustable decay.
 
 ## Consequences
 
-A slow decay shows who a character *is*; a fast one shows who they are *right now*. The decay is a display setting and can be changed without new model calls.
+With a slow decay, older paragraphs keep much of their weight, so the profile describes the character over the story so far. With a fast decay, recent paragraphs dominate, so the profile describes the character in the current scene. The decay is a display setting and can be changed without new model calls.

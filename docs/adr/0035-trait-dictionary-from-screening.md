@@ -6,7 +6,8 @@
 ## Context
 
 [ADR 0016](0016-precomputed-trait-dictionary.md) fixed a dictionary of about 30 traits. Picking
-them by intuition risks traits that never move. A hundred candidates
+them by intuition risks choosing traits whose values hardly change as the story goes on, or that
+get almost no evidence. A hundred candidates
 ([data/traits/candidates.json](../../data/traits/candidates.json)) were taken from Patrick
 Gunkel's Ideonomy list of personality traits, leaving out traits the text cannot show (looks,
 health) and near-duplicates.
@@ -31,10 +32,11 @@ Findings:
 ## Decision
 
 The dictionary ([data/traits/dictionary.json](../../data/traits/dictionary.json)) holds 30 traits,
-chosen for spread across characters, movement over the story, and variety, with one trait per
+chosen for spread across characters, change in value over the story, and variety, with one trait per
 cluster of near-synonyms. A few traits that did not separate characters in *Run, Melos!* (*leaderly*,
-*irritable*, *uninhibited*) were kept because they are likely to matter in other works and have
-engaging labels.
+*irritable*, *uninhibited*) were kept because they may separate characters in other works, and
+because their casual labels (*良い上司*, *キレやすい*, *ぶっ飛んでる*) are the kind of word the
+dictionary was meant to have ([ADR 0016](0016-precomputed-trait-dictionary.md)).
 
 ## Consequences
 

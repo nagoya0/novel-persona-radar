@@ -19,9 +19,11 @@ At that size a whole short story (75 paragraphs) costs roughly ten yen.
 
 ## Decision
 
-Keep a dictionary of about 30 traits, chosen to be fun rather than clinical (*良い上司* "would
-make a good boss", *キレやすい* "quick to snap", *ぶっ飛んでる* "wildly out there"), each with a
-short English description that goes into the question. Judge every character against every trait
+Keep a dictionary of about 30 traits, labelled with casual, everyday words rather than
+psychological terms (*良い上司* "would make a good boss", *キレやすい* "quick to snap",
+*ぶっ飛んでる* "wildly out there"): judging characters of serious literary classics in such words
+is what makes the demo interesting ([ADR 0038](0038-current-radar-and-trait-ranking.md)). Each
+trait has a short English description that goes into the question. Judge every character against every trait
 for every paragraph in advance. The viewer picks the chart's axes from the dictionary, and can
 also draw a random set.
 

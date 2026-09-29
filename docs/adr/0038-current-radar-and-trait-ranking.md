@@ -7,10 +7,19 @@
 ## Context
 
 The prototype showed two layers on the radar (the accumulated profile underneath, the current part
-on top) and a timeline of the accumulated values below it. Looking at it on screen, neither read
-easily: overlapping shapes and six coloured lines both have to be decoded before they say anything,
-and the charm of the project — plain, casual words applied to classic characters — was buried under
-the geometry.
+on top) and a timeline of the accumulated values below it. On screen this was too much information:
+the overlapping shapes and the six coloured lines both have to be worked out before the viewer can
+tell what they show.
+
+What makes this demo interesting is a combination of two things: a reader for serious literary
+classics, and personality judgments of their characters in casual words such as *キレやすい* or
+*ぶっ飛んでる*. Visitors to a demo decide at first sight whether it is interesting. When the screen
+first asks them to work out charts, the combination does not come across, and a visitor who does not
+understand what they are looking at may simply stop.
+
+So the analysis column is judged by whether a first look conveys what is interesting, not only by
+whether each chart can be read. The prototype did not meet this, so the information shown was cut
+down to the essentials.
 
 ## Decision
 
@@ -20,7 +29,7 @@ the geometry.
 - **Ranking: the story so far.** All 30 traits of the dictionary ranked by accumulated value, top
   ten shown, each with its casual label and a bar. No rank-change markers and no count of traits
   without evidence; both were tried and made the list noisier.
-- **Motion carries the change.** When the reader turns a page, bars grow and shrink and rows slide
+- **Change is shown by animation.** When the reader turns a page, bars grow and shrink and rows slide
   to their new ranks; traits entering or leaving the top ten fade (Motion, with reduced motion
   honoured, [ADR 0021](0021-keyboard-and-reduced-motion.md)).
 - **The timeline is dropped.**

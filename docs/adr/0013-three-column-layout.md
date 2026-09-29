@@ -7,7 +7,8 @@
 
 The page has three jobs: choose a work, read it, and watch the characters' profiles change.
 Readers in left-to-right layouts scan from left to right, and the page is used in that order:
-choose, then read, then look at what the reading did.
+choose a work, then read it, then look at how the characters' profiles changed as the reader went
+through the text.
 
 ## Decision
 

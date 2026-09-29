@@ -11,8 +11,9 @@ radar that morphs between parts, and a reduced-motion path for all of it
 ([ADR 0021](0021-keyboard-and-reduced-motion.md)).
 
 Considered: Recharts, which draws both chart types out of the box but makes per-segment styling
-and cross-chart highlighting awkward; ECharts, which animates well but sits less naturally in React
-and turns fine control into configuration.
+and cross-chart highlighting awkward; ECharts, which animates well but is not built from React
+components, so details such as per-segment styling would be set through its configuration options
+rather than written as components.
 
 ## Decision
 

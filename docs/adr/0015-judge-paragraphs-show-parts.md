@@ -9,8 +9,9 @@
 characters, because many are a single line of dialogue, but the longest is about 1,500.
 
 One paragraph per screen would mean 75 steps through a short story, many of them a single line
-that barely moves the chart. Large parts would blur several moods into one and still need to fit
-a vertical column, which at a laptop width holds roughly 500 characters.
+that barely changes the chart. Large parts would combine scenes that give different impressions of
+a character into a single impression, and would still need to fit a vertical column, which at a
+laptop width holds roughly 500 characters.
 
 Packing whole paragraphs up to a character budget gives, for *Run, Melos!*: 200 characters,
 39 parts; 400, 23 parts; 600, 17 parts.

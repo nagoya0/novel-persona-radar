@@ -5,7 +5,7 @@
 
 ## Context
 
-A fixed set of axes makes every character look like a variation on the same template.
+With a fixed set of axes, every character is described by the same few traits and differs from the others only in the values on them.
 
 ## Decision
 
@@ -13,4 +13,4 @@ Draw the axes from a dictionary of traits for each reading.
 
 ## Consequences
 
-Some traits will never be addressed by the story and stay grey. That is a result in itself, not a failure.
+Some traits will never be addressed by the story and stay grey. A grey axis is not an error: it tells the viewer that the story gives no evidence about that trait for that character.

@@ -7,7 +7,7 @@
 
 In the test behind [ADR 0016](0016-precomputed-trait-dictionary.md), the old man from the
 opening scene, who is absent from the paragraph, still got evidence 0.39 and score 2.5 for
-*腹黒い* (scheming) — the king's mood leaking onto another character. Weighting by evidence
+*腹黒い* (scheming): evidence about the king was attributed to another character. Weighting by evidence
 ([ADR 0003](0003-evidence-and-score.md)) shrinks this but does not remove it.
 
 ## Decision
