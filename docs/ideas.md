@@ -2,13 +2,6 @@
 
 Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is removed from here.
 
-## Open work
-
-Decided but not built yet, roughly in order:
-
-1. **A fresh pre-release audit** before making the repository public. The audit
-   includes the ADRs: check that each records what was actually agreed, not an assumption.
-
 ## Features
 
 - **Jump to the evidence.** Clicking a trait in the ranking or on the radar jumps to the paragraph

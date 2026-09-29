@@ -64,7 +64,7 @@ The judging model is [Jev](https://docs.typesafe.ai) by TypeSafe AI.
 
 ## Repository hygiene
 
-- This repository will become public. Keep personal circumstances, employers and other private
-  context out of documents, code, comments and commit messages.
+- This repository is public. Keep personal circumstances, employers, details of the maintainer's
+  own machine and other private context out of documents, code, comments and commit messages.
 - Commit author is the maintainer's GitHub noreply address; do not change it.
 - Texts from Aozora Bunko keep their source credits ([ADR 0009](docs/adr/0009-aozora-bunko-credits.md)).
