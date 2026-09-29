@@ -133,9 +133,20 @@ export default function WorkView({ work, works }: { work: WorkData; works: WorkS
   return (
     // Follows the operating system's reduce-motion setting (ADR 0021).
     <MotionConfig reducedMotion="user">
-      <div className="flex h-full flex-col min-[1280px]:hidden items-center justify-center p-8 text-center">
+      {/* Narrow screens get a note and the link-preview screenshot instead of the page (ADR 0012).
+          Lazy loading keeps desktops, where this block is hidden, from downloading the image. */}
+      <div className="flex h-full flex-col min-[1280px]:hidden items-center justify-center p-6 text-center">
         <p className="text-lg">このデモはパソコンのブラウザ向けです。</p>
         <p className="mt-2 text-muted">横幅 1280px 以上の画面でご覧ください。</p>
+        {/* eslint-disable-next-line @next/next/no-img-element -- static export, no image optimisation */}
+        <img
+          src="/og-image.png"
+          alt="パソコンで表示したときの画面：縦書きの『走れメロス』と、メロスの性格のレーダーチャートとランキング"
+          width={1200}
+          height={630}
+          loading="lazy"
+          className="mt-6 h-auto w-full max-w-3xl rounded border border-line shadow-sm"
+        />
       </div>
       <div className="hidden h-full min-[1280px]:flex flex-col">
         <header className="flex h-12 shrink-0 items-center justify-between border-b border-line bg-panel px-5">

@@ -6,9 +6,9 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 
 Decided but not built yet, roughly in order:
 
-1. **Screenshot or video** for the README demo section, which would also serve as the
-   narrow-screen fallback ([ADR 0012](adr/0012-desktop-browser-first.md)); which one is undecided.
-   Capture it from the deployed site, not the dev server.
+1. **README images.** The whole-page screenshot as an overview, then a cropped image per column
+   beside its explanation in *What you see*, rather than a video. Capture them from the deployed
+   site, not the dev server.
 2. **Licence and a fresh pre-release audit** before making the repository public. The audit
    includes the ADRs: check that each records what was actually agreed, not an assumption.
 

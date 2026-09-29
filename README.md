@@ -9,12 +9,7 @@ Dazai Osamu's *Run, Melos!* (走れメロス), the tyrant king's ranking starts 
 *dictator* and *distrustful*, and in the last pages *forgiving* and *warm-hearted* climb past
 them.
 
-## Demo
-
-**[novel-persona-radar.vercel.app](https://novel-persona-radar.vercel.app/)** — designed for
-desktop browsers at least 1280 pixels wide.
-
-For example, [near the end of *Run, Melos!* with the king selected](https://novel-persona-radar.vercel.app/works/run-melos?part=27&character=king).
+Try the **[demo page](https://novel-persona-radar.vercel.app/)** on a desktop browser.
 
 ## What you see
 
@@ -40,11 +35,18 @@ Reading controls ([ADR 0039](docs/adr/0039-reading-controls.md),
 | 次 / 前 side buttons, ← / → keys | Next and previous page (← is next, as in vertical text) |
 | Bottom margin of the text | Hover to reveal a page bar; click or drag to jump |
 | ▶ button, bottom left | Autoplay: turns pages at 3 seconds per line of text; the ring shows the wait |
-| 書体 in the header | Mincho or Gothic typeface |
+| 明朝 / ゴシック switch in the header | Mincho or Gothic typeface |
 | `?part=12&character=king` | Deep link to a page (1-based) with a character selected |
 
 Trait labels are casual Japanese words (*ブレない*, *水に流せる*) rather than psychology
 terms. Motion follows the operating system's reduce-motion setting.
+
+## Demo
+
+Open the **[demo page](https://novel-persona-radar.vercel.app/)** — designed for desktop browsers
+at least 1280 pixels wide; narrow screens show a screenshot instead.
+
+For example, [near the end of *Run, Melos!* with the king selected](https://novel-persona-radar.vercel.app/works/run-melos?part=27&character=king).
 
 ## How it works
 
