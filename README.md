@@ -1,13 +1,16 @@
 # Novel Persona Radar
 
-Read a novel and watch its characters take shape.
+Read a novel and watch its characters take shape, as judged by
+[Jev](https://typesafe.ai), TypeSafe AI's model for typed judgments.
 
 A reader for public-domain Japanese novels from [Aozora Bunko](https://www.aozora.gr.jp/). As you
-turn the pages, an AI judge reads each paragraph and the page shows the impression each character
-leaves: a radar for the page in front of you, and a ranking of traits for the story so far. In
-Dazai Osamu's *Run, Melos!* (走れメロス), the tyrant king's ranking starts with *scary*,
-*dictator* and *distrustful*, and in the last pages *forgiving* and *warm-hearted* climb past
-them.
+turn the pages, the page shows the impression each character leaves on Jev: a radar for the page
+in front of you, and a ranking of traits for the story so far. In Dazai Osamu's *Run, Melos!*
+(走れメロス), the tyrant king's ranking starts with *scary*, *dictator* and *distrustful*, and in
+the last pages *forgiving* and *warm-hearted* climb past them.
+
+Jev answers typed questions with probabilities and scores instead of prose. Every paragraph is
+asked 60 questions per character on stage, and the whole story came to about US$0.03.
 
 Try the **[demo page](https://novel-persona-radar.vercel.app/)** on a desktop browser.
 
