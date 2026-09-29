@@ -169,3 +169,13 @@ Design decisions are recorded as Architecture Decision Records in [docs/adr](doc
   input by 金川一之, proofreading by 高橋美奈子. The full credits are shown on the page.
 - Trait words: Patrick Gunkel, [Ideonomy: "Personality Traits"](https://ideonomy.mit.edu/essays/traits.html).
 - Judging model: [Jev](https://typesafe.ai) by TypeSafe AI.
+
+## License
+
+The code, documentation and annotations are released under the [MIT License](LICENSE), with two
+exceptions:
+
+- **The novels** (`data/works/*/source.html`) are in the public domain and come from Aozora Bunko.
+  When redistributing them, keep their credits, as Aozora Bunko asks.
+- **The judgments** (`data/works/*/judgments.jsonl`) are output from Jev, published here so that the
+  demo can be reproduced and checked. Please do not use them to train or distil models.

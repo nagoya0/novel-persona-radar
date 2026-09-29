@@ -43,3 +43,4 @@
 | 0039 | [Reading controls: side buttons, a page bar, a typeface switch and deep links](0039-reading-controls.md) | Accepted |
 | 0040 | [The work column: a scene picker and an avatar grid](0040-work-column.md) | Accepted |
 | 0041 | [Autoplay as a floating button, paced by lines](0041-autoplay-button.md) | Accepted |
+| 0042 | [MIT License, except for the novels and the judgments](0042-mit-licence-with-exceptions.md) | Accepted |

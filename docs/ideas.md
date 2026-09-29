@@ -6,7 +6,7 @@ Things not decided yet. When an idea is settled it becomes an [ADR](adr/) and is
 
 Decided but not built yet, roughly in order:
 
-1. **Licence and a fresh pre-release audit** before making the repository public. The audit
+1. **A fresh pre-release audit** before making the repository public. The audit
    includes the ADRs: check that each records what was actually agreed, not an assumption.
 
 ## Features

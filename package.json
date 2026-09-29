@@ -2,6 +2,7 @@
   "name": "novel-persona-radar",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "data": "tsx scripts/build-data.ts",
     "judge": "tsx scripts/judge.ts",
