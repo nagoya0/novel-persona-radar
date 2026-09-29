@@ -31,6 +31,9 @@ The novels themselves stay in Japanese and are never translated before being jud
   an Accepted decision without proposing a new ADR that supersedes it.
 - Record a new decision as the next numbered ADR and add it to the index. Replaced decisions are
   marked *Superseded* and linked to their replacement, not deleted.
+- Write ADRs in plain, literal language: state the facts and the reasons directly. Avoid metaphors
+  and compressed or poetic phrasing. A reader who was not part of the discussion, including the
+  author months later, must be able to follow why the decision was made.
 - Undecided ideas and open questions live in [docs/ideas.md](docs/ideas.md). When one is settled,
   write the ADR and remove it from the ideas file.
 - Write down only what cannot be read from the code or the git history.
