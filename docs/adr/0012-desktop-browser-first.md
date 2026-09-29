@@ -24,6 +24,10 @@ a desktop browser, together with a recorded video of the demo in use.
 No layout work for phones or tablets in portrait. The demo video, which the README needs anyway,
 doubles as the narrow-screen fallback, so visitors on a phone still see the idea working.
 
-*Amended 2026-09-29:* no video. Narrow screens show the note and the link-preview screenshot of the
-whole page (`public/og-image.png`, [ADR 0023](0023-nextjs-static-export.md)); the page's movement
-is small and brief next to its size, so a video of the whole page would be hard to follow.
+*Amended 2026-09-29:* no video of the whole page: its movement is small and brief next to its size,
+so it would be hard to follow. Narrow screens show the note and the link-preview screenshot of the
+whole page (`public/og-image.png`, [ADR 0023](0023-nextjs-static-export.md)). The README opens with
+a short edited video instead, zoomed in on the text and the impression, with captions and a drawn
+cursor; it is attached through GitHub rather than kept in the repository. Narrow screens keep the
+screenshot rather than that video: it would cost mobile data for people who did not ask for it,
+and visitors arriving from a post of the video have already seen it.
