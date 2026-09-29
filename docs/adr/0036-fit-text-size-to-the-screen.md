@@ -11,8 +11,8 @@ made full parts overflow the column: a part of about 400 characters and up to se
 fits a laptop-sized column at around 19 px.
 
 Screen resolution is not the browser's width. A 1920 × 1080 laptop at 125 % or 150 % scaling gives
-the page 1536 × 864 or 1280 × 720 CSS pixels; a MacBook Air gives about 1470 × 956. Visitors on
-laptops will usually see something near 1500 px wide.
+the page 1536 × 864 or 1280 × 720 CSS pixels; a MacBook Air gives about 1470 × 956. On laptops,
+the page may well be around 1500 px wide.
 
 Letting the reader change the font size was considered and rejected: text size and part size are
 tied, so a larger font would need re-packed parts, changing their number and how the charts move.

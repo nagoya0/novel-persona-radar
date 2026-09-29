@@ -57,8 +57,8 @@ The judging model is [Jev](https://docs.typesafe.ai) by TypeSafe AI.
 
 ## Secrets
 
-- API keys live in Bitwarden Secrets Manager (project `jev-sandbox`) and are injected at run time:
-  `BWS_ACCESS_TOKEN="$(cat ~/.config/bws/jev-sandbox.token)" bws run --project-id 897677e1-113a-4737-a384-b4d1006e49e9 -- <command>`
+- API keys are passed as environment variables (`TYPESAFE_API_KEY`, `AI_GATEWAY_API_KEY`) at run
+  time and never stored in the repository. Ask the maintainer how to provide them.
 - Never print, log or commit a key value. To check that a key is present, show its name and length only.
 - Never ask the maintainer to paste a key into the chat.
 

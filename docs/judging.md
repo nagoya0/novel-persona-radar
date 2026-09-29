@@ -2,8 +2,9 @@
 
 The shape of the requests behind `data/works/<id>/judgments.jsonl`. Built by
 [src/core/judging.ts](../src/core/judging.ts) and sent by `pnpm judge <work-id>`
-([ADR 0026](adr/0026-node-pipeline-and-jev-client.md)); keys are injected with `bws run` as described
-in [CLAUDE.md](../CLAUDE.md). `--dry-run` prints the first request without sending anything.
+([ADR 0026](adr/0026-node-pipeline-and-jev-client.md)); the key is read from the environment
+variable `TYPESAFE_API_KEY` (`AI_GATEWAY_API_KEY` for the Vercel route). `--dry-run` prints the
+first request without sending anything.
 
 ## One request per paragraph and on-stage character
 

@@ -6,8 +6,8 @@
 ## Context
 
 The demo is a static page: every judgment is computed in advance
-([ADR 0008](0008-replay-in-the-demo.md)) and nothing runs on a server. It will mostly be reached
-through shared links, so each work benefits from its own URL and its own link preview.
+([ADR 0008](0008-replay-in-the-demo.md)) and nothing runs on a server. Each work can have its own
+URL, and its own preview card when the link is posted on social media.
 
 Considered: Vite with React, which is simpler and would be enough for the page itself, but
 per-work pages and link previews would have to be built by hand.
