@@ -11,24 +11,55 @@ them.
 
 Try the **[demo page](https://novel-persona-radar.vercel.app/)** on a desktop browser.
 
+<a href="public/og-image.png"><img src="public/og-image.png" alt="The first page of Run, Melos!: the work column, the vertical text, and Melos's radar and ranking" width="600"></a>
+
 ## What you see
 
-Three columns, left to right ([ADR 0013](docs/adr/0013-three-column-layout.md)):
+Three columns: the work, the text, and the impression the characters leave
+([ADR 0013](docs/adr/0013-three-column-layout.md)). The impression is the point, so it comes first
+here.
 
-- **The work.** A summary, a scene picker to jump to key moments, and the main characters. A
-  character appears greyed out with a "？" when first mentioned, and in colour once they step on
-  stage; pointing at one shows their introduction, without spoilers.
-- **The text.** Vertical Japanese text with ruby, one page (about 400 characters) at a time, the
-  font fitted so that a page never scrolls.
-- **The impression.** For the chosen character:
-  - a **radar** of the current page on six axes, each picked from a dictionary of 30 traits (or
-    all redrawn at random); an axis the page says nothing about reads 印象なし, "no impression",
-    instead of a value;
-  - a **ranking** of the ten strongest traits accumulated up to this page. Bars grow and rows
-    slide to their new ranks as you turn the page.
+### The impression
 
-Reading controls ([ADR 0039](docs/adr/0039-reading-controls.md),
-[ADR 0041](docs/adr/0041-autoplay-button.md)):
+For the chosen character, a **radar** of the current page and a **ranking** of the traits
+accumulated up to it. The king of *Run, Melos!* on page 5, where he scoffs at Melos's promise to
+come back, and on the last page, after his change of heart:
+
+<table>
+  <tr>
+    <td><a href="docs/images/analysis-early.png"><img src="docs/images/analysis-early.png" alt="Page 5: the king's radar spikes on distrustful; his ranking is led by distrustful, scary and cold" width="300"></a></td>
+    <td><a href="docs/images/analysis-late.png"><img src="docs/images/analysis-late.png" alt="Page 28: the king's radar spreads over forgiving, trusting and idealistic; forgiving has risen to second in his ranking" width="300"></a></td>
+  </tr>
+  <tr>
+    <td align="center">The king, page 5</td>
+    <td align="center">The king, page 28</td>
+  </tr>
+</table>
+
+- The radar has six axes, each picked from a dictionary of 30 traits (or all redrawn at random).
+  An axis the page says nothing about reads 印象なし, "no impression", instead of a value.
+- The ranking shows the ten strongest traits so far. Bars grow and rows slide to their new ranks
+  as you turn the page.
+- Trait labels are casual Japanese words (*ブレない*, *水に流せる*) rather than psychology terms.
+
+### The text
+
+<a href="docs/images/text-column.png"><img src="docs/images/text-column.png" alt="The first page of Run, Melos! in vertical text, with next and previous buttons at the sides and the autoplay button at the bottom left" width="400"></a>
+
+Vertical Japanese text with ruby, one page (about 400 characters) at a time, the font fitted so
+that a page never scrolls.
+
+### The work
+
+<a href="docs/images/work-column.png"><img src="docs/images/work-column.png" alt="The work column: summary, scene picker, the eight main characters, and the king's introduction shown while pointing at him" width="200"></a>
+
+A summary, a scene picker to jump to key moments, and the main characters. A character appears
+greyed out with a "？" when first mentioned, and in colour once they step on stage; pointing at
+one shows their introduction below the list, without spoilers.
+
+### Controls
+
+See [ADR 0039](docs/adr/0039-reading-controls.md) and [ADR 0041](docs/adr/0041-autoplay-button.md).
 
 | Control | What it does |
 |---|---|
@@ -38,15 +69,14 @@ Reading controls ([ADR 0039](docs/adr/0039-reading-controls.md),
 | 明朝 / ゴシック switch in the header | Mincho or Gothic typeface |
 | `?part=12&character=king` | Deep link to a page (1-based) with a character selected |
 
-Trait labels are casual Japanese words (*ブレない*, *水に流せる*) rather than psychology
-terms. Motion follows the operating system's reduce-motion setting.
+Motion follows the operating system's reduce-motion setting.
 
 ## Demo
 
 Open the **[demo page](https://novel-persona-radar.vercel.app/)** — designed for desktop browsers
 at least 1280 pixels wide; narrow screens show a screenshot instead.
 
-For example, [near the end of *Run, Melos!* with the king selected](https://novel-persona-radar.vercel.app/works/run-melos?part=27&character=king).
+For example, [the last page of *Run, Melos!* with the king selected](https://novel-persona-radar.vercel.app/works/run-melos?part=28&character=king).
 
 ## How it works
 
