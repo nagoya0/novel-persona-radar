@@ -5,10 +5,17 @@
 
 ## Context
 
-In the test behind [ADR 0016](0016-precomputed-trait-dictionary.md), the old man from the
-opening scene, who is absent from the paragraph, still got evidence 0.39 and score 2.5 for
-*腹黒い* (scheming): evidence about the king was attributed to another character. Weighting by evidence
-([ADR 0003](0003-evidence-and-score.md)) shrinks this but does not remove it.
+The test behind [ADR 0016](0016-precomputed-trait-dictionary.md) used one paragraph of
+*Run, Melos!* in which the king privately sneers that Melos will never come back. Only the king and
+Melos are in that scene, but all five characters were judged. The old man, who appears only in the
+opening scene and is not in this paragraph, still got evidence 0.39 and score 2.5 for *腹黒い*
+(scheming): a trait of the king, the character the paragraph is about, was attributed to a character
+who is absent. Weighting by evidence ([ADR 0003](0003-evidence-and-score.md)) shrinks this but does
+not remove it.
+
+This is a different error from the one recorded in [ideas](../ideas.md) as *speakers absorbing what
+they describe*, where a character who is present and describes another's trait is judged to have
+it. A check on presence cannot catch that one.
 
 ## Decision
 
